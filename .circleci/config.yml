@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-    - image: kptakami/php-apache-python3:7.2-alpine
+    - image: kptakami/php-apache-python3:7.2-chromium-alpine
     working_directory: ~/var/www/localhost/htdocs
     steps:
     - checkout
