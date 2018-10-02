@@ -6,8 +6,11 @@ jobs:
     steps:
     - checkout
     - run:
-        name: Greeting
-        command: echo Hello, world.
+        name: test start
+        command: echo "-----test start-----"
     - run:
-        name: Print the Current Time
-        command: date
+        name: test exec
+        command: python3 easy-Tester/test/test.testsuite.py
+    - run:
+        name: test end
+        command: echo "-----test end-----"
