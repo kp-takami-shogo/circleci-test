@@ -3,12 +3,12 @@ jobs:
   build:
     docker:
     - image: kptakami/php-apache-python3:7.2-alpine
-    work_directory: /var/www/localhost/htdocs
+    working_directory: /var/www/localhost/htdocs
     steps:
     - checkout
     - run:
-        name: cd
-        command: cd /var/www/localhost/htdocs && ls
+        name: pwd & ls
+        command: pwd && ls
     - run:
         name: test start
         command: echo "-----test start-----"
