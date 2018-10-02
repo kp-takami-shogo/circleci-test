@@ -10,12 +10,12 @@ sys.path.append(TOOL_PATH + 'core/')
 from tester import Tester
 
 tester = Tester()
-tester.addConfig(TEST_PATH + 'element.yaml')
+tester.addConfig(TEST_PATH + 'element.yml')
 
 tester.setTestSuiteName('CircleCIテスト')
 
 tester.addTestCase('タイトル一致 成功', [
-    [TEST_PATH + 'testcase/test/success.testcase.yaml']
+    [TEST_PATH + 'testcase/test/success.testcase.yml']
 ])
 
 tester.execute(
