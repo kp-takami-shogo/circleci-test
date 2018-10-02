@@ -20,7 +20,7 @@ import os
 from time import sleep
 from datetime import datetime
 from collections import OrderedDict
-from PIL import Image
+# from PIL import Image
 
 class BrowserController:
 
@@ -171,7 +171,7 @@ class BrowserController:
     #
     #         scroll_height += view_height
     #         sleep(3)
-    # 
+    #
     #     stitched_image.save(file_path)
 
 
