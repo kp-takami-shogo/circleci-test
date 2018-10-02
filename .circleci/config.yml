@@ -5,10 +5,10 @@ jobs:
     - image: kptakami/php-apache-python3:7.2-alpine
     working_directory: /var/www/localhost/htdocs
     steps:
-    - run:
-      name: pwd
-      command: pwd
     - checkout
+    - run:
+      name: pwd &
+      command: pwd && ls
     - run:
         name: test start
         command: echo "-----test start-----"
