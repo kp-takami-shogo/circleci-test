@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
     - image: kptakami/php-apache-python3:7.2-alpine
+    work_directory: /var/www/localhost/htdocs
     steps:
     - checkout
     - run:
