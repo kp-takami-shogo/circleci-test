@@ -6,11 +6,14 @@ jobs:
     steps:
     - checkout
     - run:
+        name: pwd
+        command: pwd
+    - run:
         name: test start
         command: echo "-----test start-----"
     - run:
         name: test exec
-        command: cd easy-Tester/test
+        command: python3 easy-Tester/test/test.testsuite.py
     - run:
         name: test end
         command: echo "-----test end-----"
