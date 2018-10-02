@@ -6,7 +6,7 @@ jobs:
     working_directory: /var/www/localhost/htdocs
     steps:
     - run:
-      name: pwd & ls
+      name: pwd
       command: pwd && ls
     - checkout
     - run:
