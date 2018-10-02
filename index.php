@@ -7,6 +7,8 @@
 
   <script src="main.js"></script>
 
+  <title>CircleCI デモ用</title>
+
 </head>
 <body>
 </body>
