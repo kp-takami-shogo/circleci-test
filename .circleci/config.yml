@@ -6,6 +6,12 @@ jobs:
     steps:
     - checkout
     - run:
+        name: pwd
+        command: pwd
+    - run:
+        name: ls
+        command: ls
+    - run:
         name: test start
         command: echo "-----test start-----"
     - run:
