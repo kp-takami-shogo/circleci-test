@@ -36,7 +36,7 @@ class BrowserController:
                     desired_capabilities=DesiredCapabilities.CHROME
                 )
             else:
-                self.driver = webdriver.Chrome(driver_path)
+                self.driver = webdriver.Chrome()
         elif self.browser == 'Firefox':
             self.driver = webdriver.Firefox(driver_path)
         elif self.browser == 'Safari':
