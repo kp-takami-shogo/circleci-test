@@ -7,8 +7,8 @@ jobs:
     steps:
     - checkout
     - run:
-        name: pwd
-        command: pwd
+        name: cd
+        command: cd /var/www/localhost/htdocs && ls
     - run:
         name: test start
         command: echo "-----test start-----"
