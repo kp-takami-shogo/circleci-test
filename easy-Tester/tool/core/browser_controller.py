@@ -99,80 +99,80 @@ class BrowserController:
         self.driver.maximize_window()
 
 
-    # スクリーンショットを撮る
-    def screenshotByFilename(self, param_list):
-        sleep(5)
-        if self.browser == 'Chrome' or self.browser == 'Firefox':
-            if len(param_list) > 0:
-                self.fullScreenShot('./screenshot/' + self.browser + '-' + str(datetime.now()) + '-' + str(param_list[0]) + '.png')
-            else:
-                self.fullScreenShot('./screenshot/' + self.browser + '-' + str(datetime.now()) + '.png')
-        else:
-            if len(param_list) > 0:
-                self.driver.get_screenshot_as_file("./screenshot/" + self.browser + "-" + str(datetime.now()) + "-" + str(param_list[0]) + ".png")
-            else:
-                self.driver.get_screenshot_as_file("./screenshot/" + self.browser + "-" + str(datetime.now()) + ".png")
-
-    # フルスクリーンショットを撮る
-    #（ブラウザによってSeleniumのget_screenshot_as_file()ではフルスクリーンショットが出来ないため）
-    def fullScreenShot(self, file_path):
-        self.executeByJs(["window.scrollTo(0, 0);"])
-
-        total_height = self.executeByJs(["return document.body.scrollHeight"])
-        total_width = self.executeByJs(["return document.body.scrollWidth"])
-
-        view_height = self.executeByJs(["return window.innerHeight"])
-        view_width = self.executeByJs(["return window.innerWidth"])
-
-        stitched_image = Image.new("RGB", (total_width, total_height))
-
-        scroll_height = 0
-        scroll_width = 0
-
-        row_count = 0
-
-        while scroll_height < total_height:
-            col_count = 0
-            scroll_width = 0
-            self.executeByJs(["window.scrollTo(%d, %d)" % (scroll_width, scroll_height)])
-
-            while scroll_width < total_width:
-
-                if col_count > 0:
-                    self.executeByJs(["window.scrollBy("+ str(view_width) +", 0)"])
-
-                tmpname = './screenshot/tmp_%d_%d.png' % (row_count, col_count)
-                self.driver.get_screenshot_as_file(tmpname)
-                sleep(3)
-
-                if scroll_width + view_width >= total_width or scroll_height + view_height >= total_height:
-                    new_height = view_height
-                    new_width = view_width
-
-                    if scroll_width + view_width >= total_width:
-                        new_width = total_width - scroll_width
-
-                    if scroll_height + view_height >= total_height:
-                        new_height = total_height - scroll_height
-
-                    tmp_image = Image.open(tmpname)
-                    tmp_image.crop((view_width - new_width, view_height - new_height, view_width, view_height)).save(tmpname)
-                    stitched_image.paste(Image.open(tmpname), (scroll_width, scroll_height))
-
-                    scroll_width += new_width
-
-                else:
-                    stitched_image.paste(Image.open(tmpname), (scroll_width, scroll_height))
-
-                    scroll_width += view_width
-                    col_count += 1
-
-                os.remove(tmpname)
-
-            scroll_height += view_height
-            sleep(3)
-
-        stitched_image.save(file_path)
+    # # スクリーンショットを撮る
+    # def screenshotByFilename(self, param_list):
+    #     sleep(5)
+    #     if self.browser == 'Chrome' or self.browser == 'Firefox':
+    #         if len(param_list) > 0:
+    #             self.fullScreenShot('./screenshot/' + self.browser + '-' + str(datetime.now()) + '-' + str(param_list[0]) + '.png')
+    #         else:
+    #             self.fullScreenShot('./screenshot/' + self.browser + '-' + str(datetime.now()) + '.png')
+    #     else:
+    #         if len(param_list) > 0:
+    #             self.driver.get_screenshot_as_file("./screenshot/" + self.browser + "-" + str(datetime.now()) + "-" + str(param_list[0]) + ".png")
+    #         else:
+    #             self.driver.get_screenshot_as_file("./screenshot/" + self.browser + "-" + str(datetime.now()) + ".png")
+    #
+    # # フルスクリーンショットを撮る
+    # #（ブラウザによってSeleniumのget_screenshot_as_file()ではフルスクリーンショットが出来ないため）
+    # def fullScreenShot(self, file_path):
+    #     self.executeByJs(["window.scrollTo(0, 0);"])
+    #
+    #     total_height = self.executeByJs(["return document.body.scrollHeight"])
+    #     total_width = self.executeByJs(["return document.body.scrollWidth"])
+    #
+    #     view_height = self.executeByJs(["return window.innerHeight"])
+    #     view_width = self.executeByJs(["return window.innerWidth"])
+    #
+    #     stitched_image = Image.new("RGB", (total_width, total_height))
+    #
+    #     scroll_height = 0
+    #     scroll_width = 0
+    #
+    #     row_count = 0
+    #
+    #     while scroll_height < total_height:
+    #         col_count = 0
+    #         scroll_width = 0
+    #         self.executeByJs(["window.scrollTo(%d, %d)" % (scroll_width, scroll_height)])
+    #
+    #         while scroll_width < total_width:
+    #
+    #             if col_count > 0:
+    #                 self.executeByJs(["window.scrollBy("+ str(view_width) +", 0)"])
+    #
+    #             tmpname = './screenshot/tmp_%d_%d.png' % (row_count, col_count)
+    #             self.driver.get_screenshot_as_file(tmpname)
+    #             sleep(3)
+    #
+    #             if scroll_width + view_width >= total_width or scroll_height + view_height >= total_height:
+    #                 new_height = view_height
+    #                 new_width = view_width
+    #
+    #                 if scroll_width + view_width >= total_width:
+    #                     new_width = total_width - scroll_width
+    #
+    #                 if scroll_height + view_height >= total_height:
+    #                     new_height = total_height - scroll_height
+    #
+    #                 tmp_image = Image.open(tmpname)
+    #                 tmp_image.crop((view_width - new_width, view_height - new_height, view_width, view_height)).save(tmpname)
+    #                 stitched_image.paste(Image.open(tmpname), (scroll_width, scroll_height))
+    #
+    #                 scroll_width += new_width
+    #
+    #             else:
+    #                 stitched_image.paste(Image.open(tmpname), (scroll_width, scroll_height))
+    #
+    #                 scroll_width += view_width
+    #                 col_count += 1
+    #
+    #             os.remove(tmpname)
+    #
+    #         scroll_height += view_height
+    #         sleep(3)
+    # 
+    #     stitched_image.save(file_path)
 
 
     # ダイアログの[OK]ボタン/[Cancel]ボタンをクリックする
