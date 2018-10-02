@@ -15,11 +15,11 @@ jobs:
         name: cd
         command: cd easy-Tester
     - run:
+        name: ls
+        command: ls
+    - run:
         name: cd
         command: cd test
-    - run:
-        name: pwd
-        command: pwd
     - run:
         name: ls
         command: ls
