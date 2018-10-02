@@ -7,9 +7,6 @@ jobs:
     steps:
     - checkout
     - run:
-      name: pwd &
-      command: pwd && ls
-    - run:
         name: test start
         command: echo "-----test start-----"
     - run:
