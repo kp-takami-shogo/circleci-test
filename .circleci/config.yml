@@ -10,6 +10,12 @@ jobs:
         name: test start
         command: echo "-----test start-----"
     - run:
+        name: ls
+        command: ls
+    - run:
+        name: pwd
+        command: pwd
+    - run:
         name: test exec
         command: python3 easy-Tester/test/test.testsuite.py
     - run:
