@@ -20,6 +20,6 @@ tester.addTestCase('タイトル一致 成功', [
 
 tester.execute(
     browser = 'Chrome',
-    driver_path = TEST_PATH + 'chromedriver',
+    driver_path = BASE_PATH + 'chromedriver',
     url = 'http://localhost'
 )
