@@ -20,5 +20,8 @@ tester.addTestCase('タイトル一致 成功', [
 
 tester.execute(
     browser = 'Chrome',
-    url = 'http://localhost'
+    url = 'http://localhost:80',
+    remote_flg = 1,
+    remote_host_url = 'http://localhost:4444',
+    sleep_time = 1
 )

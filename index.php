@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
 
@@ -7,9 +8,11 @@
 
   <script src="main.js"></script>
 
-  <title>CircleCI デモ用</title>
+  <title>CircleCI デモ</title>
 
 </head>
+
 <body>
 </body>
+
 </html>
