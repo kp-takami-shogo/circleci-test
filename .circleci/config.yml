@@ -4,23 +4,23 @@ jobs:
   build:
     docker:
       - image: devtakami/php-python3.6:7.2-apache
-        ports:
-          - 80:80
+          ports:
+            - 80:80
       - image: selenium/standalone-chrome:3.14.0-francium
-        ports:
-          - 4444:4444
+          ports:
+            - 4444:4444
     working_directory: ~/var/www/html
     steps:
       - checkout
 #      - run:
-#        name: Wait for Selenium
-#        command: dockerize -wait http://localhost:4444 -timeout 1m
+#         name: Wait for Selenium
+#         command: dockerize -wait http://localhost:4444 -timeout 1m
       - run:
-        name: test start
-        command: echo "-----test start-----"
+          name: test start
+          command: echo "-----test start-----"
       - run:
-        name: test exec
-        command: python3.6 easy-Tester/test/test.testsuite.py
+          name: test exec
+          command: python3.6 easy-Tester/test/test.testsuite.py
       - run:
-        name: test end
-        command: echo "-----test end-----"
+          name: test end
+          command: echo "-----test end-----"
