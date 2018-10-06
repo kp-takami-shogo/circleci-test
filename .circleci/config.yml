@@ -8,9 +8,9 @@ jobs:
     working_directory: ~/var/www/html
     steps:
       - checkout
-      - run:
-          name: Wait for Selenium
-          command: dockerize -wait http://localhost:4444 -timeout 1m
+#      - run:
+#          name: Wait for Selenium
+#          command: dockerize -wait http://localhost:4444 -timeout 1m
       - run:
           name: test start
           command: echo "-----test start-----"
