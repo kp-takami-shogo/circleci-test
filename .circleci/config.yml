@@ -17,8 +17,8 @@ jobs:
           name: python2
           command: python2 --version
       - run:
-          name: python3.5.2
-          command: python3.5.2 --version
+          name: python3.4
+          command: python3.4 --version
       - run:
           name: pip
           command: pip --version
