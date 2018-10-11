@@ -26,8 +26,8 @@ jobs:
           name: pip2
           command: pip2 --version
       - run:
-          name: pip3
-          command: pip3 --version
+          name: pip3.4
+          command: pip3.4 --version
       - run:
           name: test start
           command: echo "-----test start-----"
