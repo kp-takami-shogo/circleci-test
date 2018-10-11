@@ -28,6 +28,9 @@ jobs:
           name: docker ps
           command: docker ps
       - run:
+          name: curl
+          command: curl http://localhost
+      - run:
           name: test start
           command: echo "-----test start-----"
       - run:
