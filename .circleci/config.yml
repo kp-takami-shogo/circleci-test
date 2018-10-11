@@ -17,8 +17,17 @@ jobs:
           name: python2
           command: python2 --version
       - run:
-          name: python3
-          command: python3 --version
+          name: python3.5
+          command: python3.5 --version
+      - run:
+          name: pip
+          command: pip --version
+      - run:
+          name: pip2
+          command: pip2 --version
+      - run:
+          name: pip3
+          command: pip3 --version
       - run:
           name: test start
           command: echo "-----test start-----"
