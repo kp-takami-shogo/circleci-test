@@ -43,8 +43,8 @@ jobs:
           name: python
           command: python --version
       - run:
-        name: pip
-        command: pip --version
+          name: pip
+          command: pip --version
       - run:
           name: test start
           command: echo "-----test start-----"
