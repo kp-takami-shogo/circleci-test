@@ -7,50 +7,23 @@ jobs:
     steps:
       - checkout
       - run:
-          name: docker-compose
-          command: docker-compose --version
-      - run:
-          name: python
-          command: python --version
-      - run:
-          name: python2
-          command: python2 --version
-      - run:
-          name: python3.4
-          command: python3.4 --version
-      - run:
-          name: pip
-          command: pip --version
-      - run:
-          name: pip2
-          command: pip2 --version
-#      - run:
-#          name: pip3.4
-#          command: pip3.4 --version
-      - run:
-          name: pyenv
-          command: pyenv --version
-      - run:
-          name: pyenv versions
-          command: pyenv versions
-      - run:
-          name: pyenv install --list
-          command: pyenv install --list
-      - run:
           name: switch python3.5
           command: pyenv global 3.5.2
       - run:
-          name: python
+          name: python --version
           command: python --version
       - run:
-          name: pip
+          name: pip --version
           command: pip --version
+      - run:
+          name: pip list
+          command: pip list
       - run:
           name: test start
           command: echo "-----test start-----"
 #      - run:
 #          name: test exec
-#          command: python3.6 easy-Tester/test/circleci_test.testsuites.py
+#          command: python easy-Tester/test/circleci_test.testsuites.py
       - run:
           name: test end
           command: echo "-----test end-----"
