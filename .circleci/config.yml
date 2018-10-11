@@ -31,6 +31,12 @@ jobs:
           name: pyenv
           command: pyenv --version
       - run:
+          name: pyenv versions
+          command: pyenv versions
+      - run:
+          name: pyenv install --list
+          command: pyenv install --list
+      - run:
           name: test start
           command: echo "-----test start-----"
 #      - run:
