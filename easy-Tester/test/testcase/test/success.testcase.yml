@@ -1,3 +1,0 @@
-- assertTitleContains:
-    expected: 'CircleCI'
-    comment: 'タイトルチェック'
