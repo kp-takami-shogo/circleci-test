@@ -16,7 +16,7 @@ jobs:
           command: echo "-----test start-----"
       - run:
           name: test exec
-          command: python3.6 easy-Tester/test/test.testsuite.py
+          command: python3.6 easy-Tester/test/circleci_test.testsuites.py
       - run:
           name: test end
           command: echo "-----test end-----"
