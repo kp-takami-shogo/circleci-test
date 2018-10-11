@@ -37,6 +37,15 @@ jobs:
           name: pyenv install --list
           command: pyenv install --list
       - run:
+          name: switch python3.5
+          command: pyenv global 3.5.2
+      - run:
+          name: python
+          command: python --version
+      -run:
+        name: pip
+        command: pip --version
+      - run:
           name: test start
           command: echo "-----test start-----"
 #      - run:
