@@ -42,7 +42,7 @@ jobs:
       - run:
           name: python
           command: python --version
-      -run:
+      - run:
         name: pip
         command: pip --version
       - run:
