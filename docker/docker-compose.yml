@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  # Web
+  web:
+    build: ./docker_file/web/
+    ports:
+      - 10004:80
+#    volumes:
+#      - ./volumes/web/htdocs:/var/www/localhost/htdocs
+    depends_on:
+      - db
+
+  # DB
+  db:
+    build: ./docker_file/db/
+    ports:
+      - 3309:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+
+  # Selenium
+  selenium:
+    image: selenium/standalone-chrome:3.14.0-francium
+    ports:
+      - 4444:4444

@@ -3,12 +3,22 @@ version: 2
 jobs:
   build:
     machine: true
+      image: circleci/classic:edge
     working_directory: ~/var/www/html
     steps:
       - checkout
       - run:
           name: docker-compose
           command: docker-compose --version
+      - run:
+          name: python
+          command: python --version
+      - run:
+          name: python2
+          command: python2 --version
+      - run:
+          name: python3
+          command: python3 --version
       - run:
           name: test start
           command: echo "-----test start-----"
