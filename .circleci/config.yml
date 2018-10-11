@@ -22,6 +22,12 @@ jobs:
           name: pip list
           command: pip list
       - run:
+          name: docker-compose up -d
+          command: cd docker && docker-compose up -d
+      - run:
+          name: docker ps
+          command: docker ps
+      - run:
           name: test start
           command: echo "-----test start-----"
 #      - run:

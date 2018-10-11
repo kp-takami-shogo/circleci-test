@@ -6,9 +6,9 @@ services:
   web:
     build: ./docker_file/web/
     ports:
-      - 10004:80
-#    volumes:
-#      - ./volumes/web/htdocs:/var/www/localhost/htdocs
+      - 80:80
+    volumes:
+      - ./../:/var/www/localhost/htdocs
     depends_on:
       - db
 
@@ -16,7 +16,7 @@ services:
   db:
     build: ./docker_file/db/
     ports:
-      - 3309:3306
+      - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=pass
     volumes:
