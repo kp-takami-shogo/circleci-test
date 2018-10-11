@@ -16,6 +16,9 @@ jobs:
           name: pip --version
           command: pip --version
       - run:
+          name: pip install
+          command: pip install selenium pyyaml
+      - run:
           name: pip list
           command: pip list
       - run:
