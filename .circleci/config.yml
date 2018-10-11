@@ -2,21 +2,19 @@ version: 2
 
 jobs:
   build:
-    docker:
-      - image: devtakami/php-python3.6:7.2-apache
-      - image: selenium/standalone-chrome:3.14.0-francium
+    machine: true
     working_directory: ~/var/www/html
     steps:
       - checkout
-#      - run:
-#          name: Wait for Selenium
-#          command: dockerize -wait http://localhost:4444 -timeout 1m
+      - run:
+          name: docker-compose
+          command: docker-compose --version
       - run:
           name: test start
           command: echo "-----test start-----"
-      - run:
-          name: test exec
-          command: python3.6 easy-Tester/test/circleci_test.testsuites.py
+#      - run:
+#          name: test exec
+#          command: python3.6 easy-Tester/test/circleci_test.testsuites.py
       - run:
           name: test end
           command: echo "-----test end-----"

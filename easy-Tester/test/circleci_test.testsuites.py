@@ -22,5 +22,7 @@ tester.addTestCase('テスト',[
 tester.execute(
     browser='Chrome',
     url='http://localhost:10001',
+    remote_flg = 1,
+    remote_host_url = 'selenium:4444/wd/hub',
     wait_seconds=3
 )
