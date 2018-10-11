@@ -58,6 +58,7 @@ class Assertioner:
 
     # 期待値がURLに含まれるか
     def assertUrlContains(self, param_list):
+        pprint(self.browser_controller.driver.current_url)
         WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(EC.url_contains(param_list[0]))
         result = self.browser_controller.driver.current_url
 

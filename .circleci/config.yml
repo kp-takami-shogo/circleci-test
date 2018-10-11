@@ -41,4 +41,4 @@ jobs:
           command: echo "-----test end-----"
       - run:
           name: docker-compose down
-          command: docker-compose down
+          command: cd docker && docker-compose down
