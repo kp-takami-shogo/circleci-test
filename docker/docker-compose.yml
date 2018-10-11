@@ -22,8 +22,8 @@ services:
     volumes:
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
 
-  # Selenium
-  selenium:
-    image: selenium/standalone-chrome:3.14.0-francium
-    ports:
-      - 4444:4444
+#  # Selenium
+#  selenium:
+#    image: selenium/standalone-chrome:3.14.0-francium
+#    ports:
+#      - 4444:4444
