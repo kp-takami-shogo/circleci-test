@@ -30,9 +30,9 @@ jobs:
       - run:
           name: test start
           command: echo "-----test start-----"
-#      - run:
-#          name: test exec
-#          command: python easy-Tester/test/circleci_test.testsuites.py
+      - run:
+          name: test exec
+          command: python easy-Tester/test/circleci_test.testsuites.py
       - run:
           name: test end
           command: echo "-----test end-----"
