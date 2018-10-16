@@ -22,8 +22,11 @@ jobs:
           name: test exec
           command: python easy-Tester/test/circleci_test.testsuites.py
       - run:
-          name: report path
+          name: report path1
           command: cd easy-Tester/test && ls
+      - run:
+          name: report path2
+          command: ls
       - run:
           name: test end
           command: echo "-----test end-----"
