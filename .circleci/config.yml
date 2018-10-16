@@ -10,32 +10,20 @@ jobs:
           name: switch python3.5
           command: pyenv global 3.5.2
       - run:
-          name: python --version
-          command: python --version
-      - run:
-          name: pip --version
-          command: pip --version
-      - run:
           name: pip install
           command: pip install selenium pyyaml
       - run:
-          name: pip list
-          command: pip list
-      - run:
           name: docker-compose up -d
           command: cd docker && docker-compose up -d
-      - run:
-          name: docker ps
-          command: docker ps
-      - run:
-          name: curl
-          command: curl http://localhost
       - run:
           name: test start
           command: echo "-----test start-----"
       - run:
           name: test exec
           command: python easy-Tester/test/circleci_test.testsuites.py
+      - run:
+          name: report path
+          command: cd easy-Tester/test && ls
       - run:
           name: test end
           command: echo "-----test end-----"

@@ -1,3 +1,4 @@
 - assert:
     titleContain:
       expected: 'CircleCI'
+      comment: 'タイトルにCircleCIが含まれているか'
