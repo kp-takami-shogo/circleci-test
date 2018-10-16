@@ -29,3 +29,5 @@ jobs:
           command: cd docker && docker-compose down
       - store_test_results:
           path: easy-Tester/test/reports
+      - store_artifacts:
+          path: easy-Tester/test/artifacts
