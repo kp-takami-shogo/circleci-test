@@ -22,14 +22,10 @@ jobs:
           name: test exec
           command: python easy-Tester/test/circleci_test.testsuites.py
       - run:
-          name: report path1
-          command: cd easy-Tester/test/reports && ls
-      - run:
-          name: report path2
-          command: ls
-      - run:
           name: test end
           command: echo "-----test end-----"
       - run:
           name: docker-compose down
           command: cd docker && docker-compose down
+      - store_test_results:
+          path: easy-Tester/test/reports
