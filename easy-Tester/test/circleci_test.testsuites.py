@@ -22,5 +22,6 @@ tester.addTestCase('テスト',[
 tester.execute(
     browser='Chrome',
     url='http://localhost',
-    wait_seconds=3
+    wait_seconds=3,
+    report_path='easy-Tester/test/reports/result.xml'
 )

@@ -23,7 +23,7 @@ jobs:
           command: python easy-Tester/test/circleci_test.testsuites.py
       - run:
           name: report path1
-          command: cd easy-Tester/test && ls
+          command: cd easy-Tester/test/reports && ls
       - run:
           name: report path2
           command: ls
