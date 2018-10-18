@@ -4,7 +4,7 @@
       comment: 'タイトルにCircleCIが含まれているか'
 
 - assert:
-    textEqual:
+    textContain:
       css: '#test'
       expected: 'aaa'
       comment: 'aaaという文字が表示されているか'
