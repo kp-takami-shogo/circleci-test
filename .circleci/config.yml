@@ -7,23 +7,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: switch python3.5
-          command: pyenv global 3.5.2
-      - run:
-          name: pip install
-          command: pip install selenium pyyaml
+          name: python setup
+          command: pyenv global 3.5.2 && pip install selenium pyyaml
       - run:
           name: docker-compose up -d
           command: cd docker && docker-compose up -d
       - run:
-          name: test start
-          command: echo "-----test start-----"
-      - run:
-          name: test exec
+          name: test execute
           command: python easy-Tester/test/circleci_test.testsuites.py
-      - run:
-          name: test end
-          command: echo "-----test end-----"
       - run:
           name: docker-compose down
           command: cd docker && docker-compose down

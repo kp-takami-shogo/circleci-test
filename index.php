@@ -13,6 +13,9 @@
 </head>
 
 <body>
+
+<span id="test">Test</span>
+
 </body>
 
 </html>
