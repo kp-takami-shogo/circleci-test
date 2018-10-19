@@ -1,6 +1,7 @@
-#coding:utf-8
+# coding:utf-8
 
 # 文字色付き出力用クラス
+
 
 class PrintDecoration:
     BLACK = '\033[30m'
@@ -16,5 +17,5 @@ class PrintDecoration:
     UNDERLINE = '\033[4m'
     INVISIBLE = '\033[08m'
     REVERCE = '\033[07m'
-    
+
     END = '\033[0m'

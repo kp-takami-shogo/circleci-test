@@ -1,46 +1,48 @@
-#coding:utf-8
+# coding:utf-8
 
 # BrowserControlメソッド設定クラス
+
 
 class BrowserControlSetting:
 
     browser_control_setting = {
-        'accessUrl': 'accessUrl',
+        'accessUrl': 'access_url',
 
-        'closeBrowser': 'closeBrowser',
-        'closeCurrentWindow': 'closeCurrentWindow',
+        'closeBrowser': 'close_browser',
+        'closeCurrentWindow': 'close_current_window',
 
-        'switchToDefault': 'switchToDefault',
-        'switchWindowhandle': 'switchByWindowhandle',
-        'switchWindowname': 'switchByWindowname',
-        'switchIframe': 'switchByIframe',
+        'switchToDefault': 'switch_to_default',
+        'switchWindowhandle': 'switch_by_window_handle',
+        'switchWindowname': 'switch_by_window_name',
+        'switchFrame': 'switch_by_frame',
 
-        'openNewTab': 'openNewTab',
+        'openNewTab': 'open_new_tab',
 
         'fullscreen': 'fullscreen',
 
-        'dialogAnswer': 'dialogAnswer',
+        'dialogAnswer': 'dialog_answer',
 
-        'getElementCss': 'getElementByCss',
+        'getElementCss': 'get_element_by_css',
 
-        'inputCss': 'inputByCss',
-        'inputValueCss': 'inputValueByCss',
-        'inputOriginalValueCss': 'inputOriginalValueByCss',
-        'inputInnerHTMLCss': 'inputInnerHTMLByCss',
+        'inputCss': 'input_by_css',
+        'inputValueCss': 'input_value_by_css',
+        'inputOriginalValueCss': 'input_original_value_by_css',
+        'inputInnerHTMLCss': 'input_inner_html_by_css',
 
-        'clickCss': 'clickByCss',
+        'clickCss': 'click_by_css',
 
-        'mouseHoverCss': 'mouseHoverByCss',
+        'mouseHoverCss': 'mouse_hover_by_css',
 
-        'selectIndex': 'selectByIndex',
-        'selectText': 'selectByText',
+        'selectIndex': 'select_by_index',
+        'selectText': 'select_by_text',
 
-        'scrollCss': 'scrollByCss',
+        'scrollCss': 'scroll_by_css',
 
-        'sleepSeconds': 'sleepBySeconds',
+        'sleepSeconds': 'sleep_by_seconds',
 
-        'executeJs': 'executeJs'
+        'executeJs': 'execute_js'
     }
 
-    def getBrowserControl(browser_control_key):
+    @staticmethod
+    def get_browser_control(browser_control_key):
         return BrowserControlSetting.browser_control_setting[browser_control_key]

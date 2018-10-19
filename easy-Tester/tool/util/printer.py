@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 
 import sys
 import os
@@ -6,8 +6,8 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 from print_decoration import PrintDecoration
 
-class Printer:
 
+class Printer:
     print_message = {
         'testsuite_name': PrintDecoration.BOLD + '{0[0]}' + PrintDecoration.END,
 
@@ -85,7 +85,7 @@ class Printer:
 
         'process': '{0[0]}({0[1]})',
 
-        'assert_result': 'Success: {0[0]}, Failure: {0[1]}, Error: {0[2]}'  ,
+        'assert_result': 'Success: {0[0]}, Failure: {0[1]}, Error: {0[2]}',
 
         'assert_comment': '{0[0]}',
 

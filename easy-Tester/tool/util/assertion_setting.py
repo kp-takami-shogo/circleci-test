@@ -1,37 +1,39 @@
-#coding:utf-8
+# coding:utf-8
 
 # Assertionメソッド設定クラス
+
 
 class AssertionSetting:
 
     assert_setting = {
-        'urlEqual': 'assertUrlEquals',
-        'urlContain': 'assertUrlContains',
+        'urlEqual': 'assert_url_equals',
+        'urlContain': 'assert_url_contains',
 
-        'titleEqual': 'assertTitleEquals',
-        'titleContain': 'assertTitleContains',
+        'titleEqual': 'assert_title_equals',
+        'titleContain': 'assert_title_contains',
 
-        'innerHTMLContain': 'assertInnerHTMLContains',
-        'innerHTMLNotContain': 'assertInnerHTMLNotContains',
+        'innerHTMLContain': 'assert_inner_html_contains',
+        'innerHTMLNotContain': 'assert_inner_html_not_contains',
 
-        'attributeEqual': 'assertAttributeEquals',
-        'attributeContain': 'assertAttributeContains',
+        'attributeEqual': 'assert_attribute_equals',
+        'attributeContain': 'assert_attribute_contains',
 
-        'textContain': 'assertTextContains',
-        'textNotContain': 'assertTextNotContains',
+        'textContain': 'assert_text_contains',
+        'textNotContain': 'assert_text_not_contains',
 
-        'classExist': 'assertClassExist',
-        'classNotExist': 'assertClassNotExist',
+        'classExist': 'assert_class_exist',
+        'classNotExist': 'assert_class_not_exist',
 
-        'cssPropertyEqual': 'assertCssPropertyEquals',
+        'cssPropertyEqual': 'assert_css_property_equals',
 
-        'elementExist': 'assertElementExist',
-        'elementNotExist': 'assertElementNotExist',
+        'elementExist': 'assert_element_exist',
+        'elementNotExist': 'assert_element_not_exist',
 
-        'valueEqual': 'assertValueEquals',
-        'valueContain': 'assertValueContains',
-        'valueNotContain': 'assertValueNotContains'
+        'valueEqual': 'assert_value_equals',
+        'valueContain': 'assert_value_contains',
+        'valueNotContain': 'assert_value_not_contains'
     }
 
-    def getAssertion(assertion_key):
+    @staticmethod
+    def get_assertion(assertion_key):
         return AssertionSetting.assert_setting[assertion_key]

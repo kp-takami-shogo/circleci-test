@@ -1,4 +1,4 @@
-#coding:utf-8
+# coding:utf-8
 import sys
 import os
 
@@ -11,11 +11,11 @@ from tester import Tester
 
 tester = Tester()
 
-tester.setTestSuites('CircleCI Test')
+tester.set_testsuites('CircleCI Test')
 
-tester.addTestSuite('Test')
+tester.add_testsuite('Test')
 
-tester.addTestCase('テスト',[
+tester.add_testcase('テスト', [
     [TEST_PATH + 'testcase/test.testcase.yml']
 ])
 
