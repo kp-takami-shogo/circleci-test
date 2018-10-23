@@ -5,8 +5,7 @@ import os
 
 from assertioner import Assertioner
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '../util/'))
-
+sys.path.append(os.path.join(os.path.dirname(__file__), '../setting/'))
 from assertion_setting import AssertionSetting
 
 
@@ -68,21 +67,23 @@ class AssertionManager:
     def get_results(self):
         return self.results
 
-    def set_testsuites_result(self):
+    def set_testsuites_result(self, time):
         self.results['testsuites_tests'] = self.testsuites_tests
         self.results['testsuites_failures'] = self.testsuites_failures
         self.results['testsuites_errors'] = self.testsuites_errors
+        self.results['time'] = time
 
     def add_testsuites_error_count(self):
         self.testsuites_errors += 1
 
-    def add_testsuite_result(self, testsuite_name):
+    def add_testsuite_result(self, testsuite_name, time):
         self.results['testsuite_results'].append({
             'testsuite_name': testsuite_name,
             'testsuite_tests': self.testsuite_tests,
             'testsuite_failures': self.testsuite_failures,
             'testsuite_errors': self.testsuite_errors,
-            'testcase_results': self.testcase_results
+            'testcase_results': self.testcase_results,
+            'time': time
         })
 
         self.testsuite_tests = 0
@@ -93,14 +94,15 @@ class AssertionManager:
     def add_testsuite_error_count(self):
         self.testsuite_errors += 1
 
-    def add_testcase_results(self, testcase_name):
+    def add_testcase_results(self, testcase_name, time):
         if not (self.testcase_result or self.assertion_count_per_testcase):
             self.testcase_result = 'skipped'
 
         self.testcase_results.append({
             'testcase_name': testcase_name,
             'testcase_result': self.testcase_result,
-            'testcase_content': self.testcase_content
+            'testcase_content': self.testcase_content,
+            'time': time
         })
 
         if self.testcase_result == 'failure':

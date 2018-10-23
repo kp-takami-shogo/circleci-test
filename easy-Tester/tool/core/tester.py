@@ -12,13 +12,15 @@ import os
 import traceback
 
 from test_builder import TestBuilder
+from timer import Timer
 from browser_controller import BrowserController
 from assertion_manager import AssertionManager
 from reporter import Reporter
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '../util/'))
-
+sys.path.append(os.path.join(os.path.dirname(__file__), '../setting/'))
 from browser_control_setting import BrowserControlSetting
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '../util/'))
 from printer import Printer
 
 
@@ -26,13 +28,15 @@ class Tester:
 
     def __init__(self):
         self.test_builder = TestBuilder()
+        self.timer = Timer()
+        self.assertion_manager = ''
+        self.browser_controller = ''
+
         self.testsuites_name = ''
 
         self.sleep_time = ''
-        self.debug_mode = ''
 
-        self.assertion_manager = ''
-        self.browser_controller = ''
+        self.debug_mode = ''
 
     # テスト実行
     def execute(self, *, browser='', url='', driver_path='',
@@ -45,12 +49,18 @@ class Tester:
 
         self.assertion_manager = AssertionManager(self.testsuites_name)
 
+        self.timer.start_testsuites()
+
         for testsuite_name, testcase_list in self.test_builder.get_test().items():
+            self.timer.start_testsuite()
+
             Printer.printer('testsuite_name', [testsuite_name])
             print('')
 
             for testcase_name, process_list in testcase_list.items():
                 try:
+                    self.timer.start_testcase()
+
                     self.browser_controller = BrowserController(
                         browser=browser,
                         driver_path=driver_path,
@@ -86,7 +96,7 @@ class Tester:
                     self.assertion_manager.add_testsuite_error_count()
                     self.assertion_manager.set_testcase_result('error')
                     self.assertion_manager.add_testcase_content(traceback.format_exc())
-                    self.assertion_manager.add_testcase_results(testcase_name)
+                    self.assertion_manager.add_testcase_results(testcase_name, self.timer.get_end_testcase_time())
 
                     self.browser_controller.screenshot([testsuite_name + '-' + testcase_name])
 
@@ -94,11 +104,11 @@ class Tester:
 
                     continue
 
-                self.assertion_manager.add_testcase_results(testcase_name)
+                self.assertion_manager.add_testcase_results(testcase_name, self.timer.get_end_testcase_time())
 
                 self.browser_controller.close_browser()
 
-            self.assertion_manager.add_testsuite_result(testsuite_name)
+            self.assertion_manager.add_testsuite_result(testsuite_name, self.timer.get_end_testsuite_time())
 
         print('')
         Printer.printer('assert_result', [
@@ -109,7 +119,7 @@ class Tester:
         )
         print('')
 
-        self.assertion_manager.set_testsuites_result()
+        self.assertion_manager.set_testsuites_result(self.timer.get_end_testsuites_time())
 
         reporter = Reporter()
 

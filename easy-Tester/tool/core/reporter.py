@@ -13,6 +13,7 @@ class Reporter:
         testsuites.set('tests', str(result['testsuites_tests']))
         testsuites.set('failures', str(result['testsuites_failures']))
         testsuites.set('errors', str(result['testsuites_errors']))
+        testsuites.set('time', str(round(result['time'], 3)))
 
         for testsuite_info in result['testsuite_results']:
             testsuite = et.SubElement(testsuites, 'testsuite')
@@ -20,11 +21,13 @@ class Reporter:
             testsuite.set('tests', str(testsuite_info['testsuite_tests']))
             testsuite.set('errors', str(testsuite_info['testsuite_errors']))
             testsuite.set('failures', str(testsuite_info['testsuite_failures']))
+            testsuite.set('time', str(round(testsuite_info['time'], 3)))
 
             for testcase_info in testsuite_info['testcase_results']:
                 testcase = et.SubElement(testsuite, 'testcase')
                 testcase.set('classname', testsuite_info['testsuite_name'])
                 testcase.set('name', testcase_info['testcase_name'])
+                testcase.set('time', str(round(testcase_info['time'], 3)))
 
                 if testcase_info['testcase_result'] == 'failure':
                     failure = et.SubElement(testcase, 'failure')
