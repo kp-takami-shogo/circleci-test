@@ -127,7 +127,7 @@ class Tester:
 
         if self.assertion_manager.get_total_assert_failures() is not 0:
             print('failed')
-            exit()
+            sys.exit(1)
 
     # testsuitesをセット
     def set_testsuites(self, testsuites_name):
