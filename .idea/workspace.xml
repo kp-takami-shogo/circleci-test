@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ba64d9f-8d97-4c66-8079-fc05b63f6c66" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easy-Tester/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/easy-Tester/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/easy-Tester/tool/core/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/easy-Tester/tool/core/tester.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,7 +32,7 @@
           <entry key="md" value="1" />
           <entry key="php" value="2" />
           <entry key="png" value="1" />
-          <entry key="py" value="24" />
+          <entry key="py" value="26" />
           <entry key="txt" value="2" />
           <entry key="xml" value="7" />
           <entry key="yml" value="15" />
@@ -49,7 +47,7 @@
           <entry key="Markdown" value="1" />
           <entry key="PHP" value="2" />
           <entry key="PLAIN_TEXT" value="15" />
-          <entry key="Python" value="24" />
+          <entry key="Python" value="26" />
           <entry key="XML" value="7" />
           <entry key="YAML" value="15" />
         </counts>
@@ -58,7 +56,7 @@
         <counts>
           <entry key="gitignore" value="66" />
           <entry key="php" value="132" />
-          <entry key="py" value="1411" />
+          <entry key="py" value="1415" />
           <entry key="xml" value="100" />
           <entry key="yml" value="1487" />
         </counts>
@@ -67,7 +65,7 @@
         <counts>
           <entry key="PHP" value="132" />
           <entry key="PLAIN_TEXT" value="66" />
-          <entry key="Python" value="1411" />
+          <entry key="Python" value="1415" />
           <entry key="XML" value="100" />
           <entry key="YAML" value="1487" />
         </counts>
@@ -88,11 +86,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/easy-Tester/tool/core/tester.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="128" column="34" selection-start-line="128" selection-start-column="34" selection-end-line="128" selection-end-column="34" />
+            <state relative-caret-position="544">
+              <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
               <folding>
                 <element signature="e#143#153#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/easy-Tester/tool/util/printer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2130">
+              <caret line="145" lean-forward="true" selection-start-line="145" selection-end-line="145" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/easy-Tester/tool/util/print_decoration.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -241,6 +257,13 @@
               <item name="circleci-test" type="b2602c69:ProjectViewProjectNode" />
               <item name="circleci-test" type="462c0819:PsiDirectoryNode" />
               <item name="easy-Tester" type="462c0819:PsiDirectoryNode" />
+              <item name="tool" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="circleci-test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="circleci-test" type="462c0819:PsiDirectoryNode" />
+              <item name="easy-Tester" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -297,12 +320,12 @@
       <workItem from="1539847623465" duration="2227000" />
       <workItem from="1539849877401" duration="1648000" />
       <workItem from="1539852458035" duration="8079000" />
-      <workItem from="1540183388181" duration="7910000" />
+      <workItem from="1540183388181" duration="8208000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32537000" />
+    <option name="totallyTimeSpent" value="32835000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -468,20 +491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/easy-Tester/tool/util/printer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1457">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/easy-Tester/tool/util/print_decoration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/easy-Tester/test/reports/result.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -542,10 +551,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/easy-Tester/tool/util/printer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2130">
+          <caret line="145" lean-forward="true" selection-start-line="145" selection-end-line="145" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/easy-Tester/tool/util/print_decoration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/easy-Tester/tool/core/tester.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="128" column="34" selection-start-line="128" selection-start-column="34" selection-end-line="128" selection-end-column="34" />
+        <state relative-caret-position="544">
+          <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
           <folding>
             <element signature="e#143#153#0" expanded="true" />
           </folding>
