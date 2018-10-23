@@ -126,7 +126,7 @@ class Tester:
         reporter.create_report(self.assertion_manager.get_results(), report_path=report_path)
 
         if self.assertion_manager.get_total_assert_failures() is not 0:
-            sys.exit('')
+            sys.exit('Test failure')
 
     # testsuitesをセット
     def set_testsuites(self, testsuites_name):

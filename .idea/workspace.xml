@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ba64d9f-8d97-4c66-8079-fc05b63f6c66" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/easy-Tester/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/easy-Tester/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/easy-Tester/tool/core/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/easy-Tester/tool/core/tester.py" afterDir="false" />
     </list>
@@ -28,7 +29,7 @@
           <entry key="Dockerfile" value="4" />
           <entry key="cnf" value="1" />
           <entry key="css" value="1" />
-          <entry key="gitignore" value="9" />
+          <entry key="gitignore" value="12" />
           <entry key="js" value="1" />
           <entry key="md" value="1" />
           <entry key="php" value="2" />
@@ -47,7 +48,7 @@
           <entry key="JavaScript" value="1" />
           <entry key="Markdown" value="1" />
           <entry key="PHP" value="2" />
-          <entry key="PLAIN_TEXT" value="12" />
+          <entry key="PLAIN_TEXT" value="15" />
           <entry key="Python" value="24" />
           <entry key="XML" value="7" />
           <entry key="YAML" value="15" />
@@ -57,7 +58,7 @@
         <counts>
           <entry key="gitignore" value="66" />
           <entry key="php" value="132" />
-          <entry key="py" value="1407" />
+          <entry key="py" value="1411" />
           <entry key="xml" value="100" />
           <entry key="yml" value="1487" />
         </counts>
@@ -66,7 +67,7 @@
         <counts>
           <entry key="PHP" value="132" />
           <entry key="PLAIN_TEXT" value="66" />
-          <entry key="Python" value="1407" />
+          <entry key="Python" value="1411" />
           <entry key="XML" value="100" />
           <entry key="YAML" value="1487" />
         </counts>
@@ -88,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/easy-Tester/tool/core/tester.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="529">
-              <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
+              <caret line="128" column="34" selection-start-line="128" selection-start-column="34" selection-end-line="128" selection-end-column="34" />
               <folding>
                 <element signature="e#143#153#0" expanded="true" />
               </folding>
@@ -296,12 +297,12 @@
       <workItem from="1539847623465" duration="2227000" />
       <workItem from="1539849877401" duration="1648000" />
       <workItem from="1539852458035" duration="8079000" />
-      <workItem from="1540183388181" duration="7737000" />
+      <workItem from="1540183388181" duration="7910000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32364000" />
+    <option name="totallyTimeSpent" value="32537000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -527,13 +528,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/easy-Tester/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -541,10 +535,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/easy-Tester/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/easy-Tester/tool/core/tester.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
-          <caret line="128" column="22" selection-start-line="128" selection-start-column="22" selection-end-line="128" selection-end-column="22" />
+          <caret line="128" column="34" selection-start-line="128" selection-start-column="34" selection-end-line="128" selection-end-column="34" />
           <folding>
             <element signature="e#143#153#0" expanded="true" />
           </folding>
