@@ -57,7 +57,7 @@
         <counts>
           <entry key="gitignore" value="66" />
           <entry key="php" value="132" />
-          <entry key="py" value="1351" />
+          <entry key="py" value="1386" />
           <entry key="xml" value="100" />
           <entry key="yml" value="1487" />
         </counts>
@@ -66,7 +66,7 @@
         <counts>
           <entry key="PHP" value="132" />
           <entry key="PLAIN_TEXT" value="66" />
-          <entry key="Python" value="1351" />
+          <entry key="Python" value="1386" />
           <entry key="XML" value="100" />
           <entry key="YAML" value="1487" />
         </counts>
@@ -87,8 +87,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/easy-Tester/tool/core/tester.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="128" column="12" lean-forward="true" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="12" />
+            <state relative-caret-position="525">
+              <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
               <folding>
                 <element signature="e#143#153#0" expanded="true" />
               </folding>
@@ -296,12 +296,12 @@
       <workItem from="1539847623465" duration="2227000" />
       <workItem from="1539849877401" duration="1648000" />
       <workItem from="1539852458035" duration="8079000" />
-      <workItem from="1540183388181" duration="7004000" />
+      <workItem from="1540183388181" duration="7250000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31631000" />
+    <option name="totallyTimeSpent" value="31877000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -543,8 +543,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/easy-Tester/tool/core/tester.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="128" column="12" lean-forward="true" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="12" />
+        <state relative-caret-position="525">
+          <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
           <folding>
             <element signature="e#143#153#0" expanded="true" />
           </folding>
