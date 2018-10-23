@@ -23,6 +23,6 @@ tester.execute(
     browser='Chrome',
     url='http://localhost',
     wait_seconds=2,
-    report_path='easy-Tester/test/reports/results.xml',
-    artifacts_path='easy-Tester/test/artifacts/'
+    report_path=TEST_PATH + 'reports/results.xml',
+    artifacts_path=TEST_PATH + 'artifacts/'
 )
