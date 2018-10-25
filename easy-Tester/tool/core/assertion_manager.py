@@ -21,7 +21,8 @@ class AssertionManager:
             'testsuites_tests': 0,
             'testsuites_failures': 0,
             'testsuites_errors': 0,
-            'testsuite_results': []
+            'testsuite_results': [],
+            'time': 0
         }
 
         self.testsuites_name = testsuites_name

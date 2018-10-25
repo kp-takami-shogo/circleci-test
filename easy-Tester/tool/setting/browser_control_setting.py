@@ -38,9 +38,9 @@ class BrowserControlSetting:
 
         'scrollCss': 'scroll_by_css',
 
-        'sleepSeconds': 'sleep_by_seconds',
+        'executeJs': 'execute_js',
 
-        'executeJs': 'execute_js'
+        'sleepSeconds': 'sleep_by_seconds'
     }
 
     @staticmethod

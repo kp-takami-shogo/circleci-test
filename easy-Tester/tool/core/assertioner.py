@@ -9,7 +9,6 @@ import sys
 import os
 import re
 
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 
@@ -30,40 +29,23 @@ class Assertioner:
     # 期待値とURLが等しいか
     def assert_url_equals(self, param_list):
         try:
-            WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-                ec.url_to_be(param_list[0]))
-            result = self.browser_controller.driver.current_url
-
-            assert param_list[0] == result
+            self.browser_controller.wait.until(ec.url_to_be(param_list[0]))
 
             if len(param_list) > 1:
                 Printer.printer('assert_comment', [param_list[1]])
 
-            Printer.printer('assert_url_equals_success', [param_list[0], result])
+            Printer.printer('assert_url_equals_success', [param_list[0], self.browser_controller.driver.current_url])
             print('')
 
             return [True]
 
         except TimeoutException:
-            result = self.browser_controller.driver.current_url
-
             result_content = ''
 
             if len(param_list) > 1:
                 result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
 
-            result_content += Printer.printer('assert_url_equals_failure', [param_list[0], result]) + '\n\n'
-            print('')
-
-            return [False, result_content]
-
-        except AssertionError:
-            result_content = ''
-
-            if len(param_list) > 1:
-                result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
-
-            result_content += Printer.printer('assert_url_equals_failure', [param_list[0], result]) + '\n\n'
+            result_content += Printer.printer('assert_url_equals_failure', [param_list[0], self.browser_controller.driver.current_url]) + '\n\n'
             print('')
 
             return [False, result_content]
@@ -71,40 +53,23 @@ class Assertioner:
     # 期待値がURLに含まれるか
     def assert_url_contains(self, param_list):
         try:
-            WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-                ec.url_contains(param_list[0]))
-            result = self.browser_controller.driver.current_url
-
-            assert param_list[0] in result
+            self.browser_controller.wait.until(ec.url_contains(param_list[0]))
 
             if len(param_list) > 1:
                 Printer.printer('assert_comment', [param_list[1]])
 
-            Printer.printer('assert_url_contains_success', [param_list[0], result])
+            Printer.printer('assert_url_contains_success', [param_list[0], self.browser_controller.driver.current_url])
             print('')
 
             return [True]
 
         except TimeoutException:
-            result = self.browser_controller.driver.current_url
-
             result_content = ''
 
             if len(param_list) > 1:
                 result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
 
-            result_content += Printer.printer('assert_url_contains_failure', [param_list[0], result]) + '\n\n'
-            print('')
-
-            return [False, result_content]
-
-        except AssertionError:
-            result_content = ''
-
-            if len(param_list) > 1:
-                result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
-
-            result_content += Printer.printer('assert_url_contains_failure', [param_list[0], result]) + '\n\n'
+            result_content += Printer.printer('assert_url_contains_failure', [param_list[0], self.browser_controller.driver.current_url]) + '\n\n'
             print('')
 
             return [False, result_content]
@@ -112,40 +77,23 @@ class Assertioner:
     # 期待値とTitleが等しいか
     def assert_title_equals(self, param_list):
         try:
-            WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-                ec.title_is(param_list[0]))
-            result = self.browser_controller.driver.title
-
-            assert param_list[0] == result
+            self.browser_controller.wait.until(ec.title_is(param_list[0]))
 
             if len(param_list) > 1:
                 Printer.printer('assert_comment', [param_list[1]])
 
-            Printer.printer('assert_title_equals_success', [param_list[0], result])
+            Printer.printer('assert_title_equals_success', [param_list[0], self.browser_controller.driver.title])
             print('')
 
             return [True]
 
         except TimeoutException:
-            result = self.browser_controller.driver.title
-
             result_content = ''
 
             if len(param_list) > 1:
                 result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
 
-            result_content += Printer.printer('assert_title_equals_failure', [param_list[0], result]) + '\n\n'
-            print('')
-
-            return [False, result_content]
-
-        except AssertionError:
-            result_content = ''
-
-            if len(param_list) > 1:
-                result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
-
-            result_content += Printer.printer('assert_title_equals_failure', [param_list[0], result]) + '\n\n'
+            result_content += Printer.printer('assert_title_equals_failure', [param_list[0], self.browser_controller.driver.title]) + '\n\n'
             print('')
 
             return [False, result_content]
@@ -153,48 +101,31 @@ class Assertioner:
     # 期待値がTitleに含まれるか
     def assert_title_contains(self, param_list):
         try:
-            WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-                ec.title_contains(param_list[0]))
-            result = self.browser_controller.driver.title
-
-            assert param_list[0] in result
+            self.browser_controller.wait.until(ec.title_contains(param_list[0]))
 
             if len(param_list) > 1:
                 Printer.printer('assert_comment', [param_list[1]])
 
-            Printer.printer('assert_title_contains_success', [param_list[0], result])
+            Printer.printer('assert_title_contains_success', [param_list[0], self.browser_controller.driver.title])
             print('')
 
             return [True]
 
         except TimeoutException:
-            result = self.browser_controller.driver.title
-
             result_content = ''
 
             if len(param_list) > 1:
                 result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
 
-            result_content += Printer.printer('assert_title_contains_failure', [param_list[0], result]) + '\n\n'
-            print('')
-
-            return [False, result_content]
-
-        except AssertionError:
-            result_content = ''
-
-            if len(param_list) > 1:
-                result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
-
-            result_content += Printer.printer('assert_title_contains_failure', [param_list[0], result]) + '\n\n'
+            result_content += Printer.printer('assert_title_contains_failure', [param_list[0], self.browser_controller.driver.title]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値がInnerHTMLに含まれるか
     def assert_inner_html_contains(self, param_list):
-        WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-            ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+
         js = 'return document.querySelector(\'' + param_list[0] + '\').innerHTML'
         result = self.browser_controller.execute_js([js])
 
@@ -222,8 +153,8 @@ class Assertioner:
 
     # 期待値がInnerHTMLに含まれないか
     def assert_inner_html_not_contains(self, param_list):
-        WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-            ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+
         js = 'return document.querySelector(\'' + param_list[0] + '\').innerHTML'
         result = self.browser_controller.execute_js([js])
 
@@ -251,8 +182,8 @@ class Assertioner:
 
     # 期待値とAttributeが等しいか
     def assert_attribute_equals(self, param_list):
-        WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-            ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+
         js = 'return document.querySelector(\'' + param_list[0] + '\').getAttribute(\'' + param_list[1] + '\');'
         result = self.browser_controller.execute_js([js])
 
@@ -280,8 +211,8 @@ class Assertioner:
 
     # 期待値がAttributeに含まれるか
     def assert_attribute_contains(self, param_list):
-        WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-            ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+
         js = 'return document.querySelector(\'' + param_list[0] + '\').getAttribute(\'' + param_list[1] + '\');'
         result = self.browser_controller.execute_js([js])
 
@@ -310,42 +241,23 @@ class Assertioner:
     # 期待値がTextに含まれるか
     def assert_text_contains(self, param_list):
         try:
-            WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-                ec.text_to_be_present_in_element((By.CSS_SELECTOR, param_list[0]), param_list[1]))
-            js = 'return document.querySelector(\'' + param_list[0] + '\').textContent;'
-            result = self.browser_controller.execute_js([js])
-
-            assert param_list[1] in result
+            self.browser_controller.wait.until(ec.text_to_be_present_in_element((By.CSS_SELECTOR, param_list[0]), param_list[1]))
 
             if len(param_list) > 2:
                 Printer.printer('assert_comment', [param_list[2]])
 
-            Printer.printer('assert_text_contains_success', [param_list[1], result])
+            Printer.printer('assert_text_contains_success', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).text])
             print('')
 
             return [True]
 
         except TimeoutException:
-            js = 'return document.querySelector(\'' + param_list[0] + '\').textContent;'
-            result = self.browser_controller.execute_js([js])
-
             result_content = ''
 
             if len(param_list) > 2:
                 result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
 
-            result_content += Printer.printer('assert_text_contains_failure', [param_list[1], result]) + '\n\n'
-            print('')
-
-            return [False, result_content]
-
-        except AssertionError:
-            result_content = ''
-
-            if len(param_list) > 2:
-                result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
-
-            result_content += Printer.printer('assert_text_contains_failure', [param_list[1], result]) + '\n\n'
+            result_content += Printer.printer('assert_text_contains_failure', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).text]) + '\n\n'
             print('')
 
             return [False, result_content]
@@ -353,48 +265,31 @@ class Assertioner:
     # 期待値がTextに含まれないか
     def assert_text_not_contains(self, param_list):
         try:
-            WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-                ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
-            js = 'return document.querySelector(\'' + param_list[0] + '\').textContent;'
-            result = self.browser_controller.execute_js([js])
+            self.browser_controller.wait.until(ec.text_to_be_present_in_element((By.CSS_SELECTOR, param_list[0]), param_list[1]))
 
-            assert param_list[1] not in result
-
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
-
-            Printer.printer('assert_text_not_contains_success', [param_list[1], result])
-            print('')
-
-            return [True]
-
-        except TimeoutException:
-            js = 'return document.querySelector(\'' + param_list[0] + '\').textContent;'
-            result = self.browser_controller.execute_js([js])
-
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
-
-            Printer.printer('assert_text_not_contains_success', [param_list[1], result])
-            print('')
-
-            return [True]
-
-        except AssertionError:
             result_content = ''
 
             if len(param_list) > 2:
                 result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
 
-            result_content += Printer.printer('assert_text_not_contains_failure', [param_list[1], result]) + '\n\n'
+            result_content += Printer.printer('assert_text_not_contains_failure', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).text]) + '\n\n'
             print('')
 
             return [False, result_content]
 
+        except TimeoutException:
+            if len(param_list) > 2:
+                Printer.printer('assert_comment', [param_list[2]])
+
+            Printer.printer('assert_text_not_contains_success', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).text])
+            print('')
+
+            return [True]
+
     # ClassNameに期待値が存在するか
     def assert_class_exist(self, param_list):
-        WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-            ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+
         js = 'return document.querySelector(\'' + param_list[0] + '\').className;'
         class_names = self.browser_controller.execute_js([js])
 
@@ -427,8 +322,8 @@ class Assertioner:
 
     # ClassNameに期待値が存在しないか
     def assert_class_not_exist(self, param_list):
-        WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-            ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+
         js = 'return document.querySelector(\'' + param_list[0] + '\').className;'
         class_names = self.browser_controller.execute_js([js])
 
@@ -461,8 +356,8 @@ class Assertioner:
 
     # 期待値とCssPropertyが等しいか
     def assert_css_property_equals(self, param_list):
-        WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-            ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+
         js = 'return document.querySelector(\'' + param_list[0] + '\').style.' + param_list[1] + ';'
         result = self.browser_controller.execute_js([js])
 
@@ -491,12 +386,7 @@ class Assertioner:
     # 特定のElementが存在するか
     def assert_element_exist(self, param_list):
         try:
-            WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-                ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
-            js = 'return document.querySelector(\'' + param_list[0] + '\');'
-            result = self.browser_controller.execute_js([js])
-
-            assert result is not None
+            self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
 
             if len(param_list) > 1:
                 Printer.printer('assert_comment', [param_list[1]])
@@ -517,45 +407,11 @@ class Assertioner:
 
             return [False, result_content]
 
-        except AssertionError:
-            result_content = ''
-
-            if len(param_list) > 1:
-                result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
-
-            result_content += Printer.printer('assert_element_exist_failure', [param_list[0]]) + '\n\n'
-            print('')
-
-            return [False, result_content]
-
     # 特定のElementが存在しないか
     def assert_element_not_exist(self, param_list):
         try:
-            WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-                ec.invisibility_of_element_located((By.CSS_SELECTOR, param_list[0])))
-            js = 'return document.querySelector(\'' + param_list[0] + '\');'
-            result = self.browser_controller.execute_js([js])
+            self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
 
-            assert result is None
-
-            if len(param_list) > 1:
-                Printer.printer('assert_comment', [param_list[1]])
-
-            Printer.printer('assert_element_not_exist_success', [param_list[0]])
-            print('')
-
-            return [True]
-
-        except TimeoutException:
-            if len(param_list) > 1:
-                Printer.printer('assert_comment', [param_list[1]])
-
-            Printer.printer('assert_element_not_exist_success', [param_list[0]])
-            print('')
-
-            return [True]
-
-        except AssertionError:
             result_content = ''
 
             if len(param_list) > 1:
@@ -566,13 +422,21 @@ class Assertioner:
 
             return [False, result_content]
 
+        except TimeoutException:
+            if len(param_list) > 1:
+                Printer.printer('assert_comment', [param_list[1]])
+
+            Printer.printer('assert_element_not_exist_success', [param_list[0]])
+            print('')
+
+            return [True]
+
     # 期待値とValueが等しいか
     def assert_value_equals(self, param_list):
         try:
-            WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-                ec.text_to_be_present_in_element_value((By.CSS_SELECTOR, param_list[0]), param_list[1]))
-            js = 'return document.querySelector(\'' + param_list[0] + '\').value;'
-            result = self.browser_controller.execute_js([js])
+            self.browser_controller.wait.until(ec.text_to_be_present_in_element_value((By.CSS_SELECTOR, param_list[0]), param_list[1]))
+
+            result = self.browser_controller.get_element_by_css(param_list[0]).get_attribute('value')
 
             assert param_list[1] == result
 
@@ -585,15 +449,12 @@ class Assertioner:
             return [True]
 
         except TimeoutException:
-            js = 'return document.querySelector(\'' + param_list[0] + '\').value;'
-            result = self.browser_controller.execute_js([js])
-
             result_content = ''
 
             if len(param_list) > 2:
                 result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
 
-            result_content += Printer.printer('assert_value_equals_failure', [param_list[1], result]) + '\n\n'
+            result_content += Printer.printer('assert_value_equals_failure', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).get_attribute('value')]) + '\n\n'
             print('')
 
             return [False, result_content]
@@ -612,42 +473,23 @@ class Assertioner:
     # 期待値がValueに含まれるか
     def assert_value_contains(self, param_list):
         try:
-            WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-                ec.text_to_be_present_in_element_value((By.CSS_SELECTOR, param_list[0]), param_list[1]))
-            js = 'return document.querySelector(\'' + param_list[0] + '\').value;'
-            result = self.browser_controller.execute_js([js])
-
-            assert param_list[1] in result
+            self.browser_controller.wait.until(ec.text_to_be_present_in_element_value((By.CSS_SELECTOR, param_list[0]), param_list[1]))
 
             if len(param_list) > 2:
                 Printer.printer('assert_comment', [param_list[2]])
 
-            Printer.printer('assert_value_contains_success', [param_list[1], result])
+            Printer.printer('assert_value_contains_success', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).get_attribute('value')])
             print('')
 
             return [True]
 
         except TimeoutException:
-            js = 'return document.querySelector(\'' + param_list[0] + '\').value;'
-            result = self.browser_controller.execute_js([js])
-
             result_content = ''
 
             if len(param_list) > 2:
                 result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
 
-            result_content += Printer.printer('assert_value_contains_failure', [param_list[1], result]) + '\n\n'
-            print('')
-
-            return [False, result_content]
-
-        except AssertionError:
-            result_content = ''
-
-            if len(param_list) > 2:
-                result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
-
-            result_content += Printer.printer('assert_value_contains_failure', [param_list[1], result]) + '\n\n'
+            result_content += Printer.printer('assert_value_contains_failure', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).get_attribute('value')]) + '\n\n'
             print('')
 
             return [False, result_content]
@@ -655,40 +497,23 @@ class Assertioner:
     # 期待値がValueに含まれないか
     def assert_value_not_contains(self, param_list):
         try:
-            WebDriverWait(self.browser_controller.driver, self.browser_controller.wait_seconds).until(
-                ec.text_to_be_present_in_element_value((By.CSS_SELECTOR, param_list[0]), param_list[1]))
-            js = 'return document.querySelector(\'' + param_list[0] + '\').value;'
-            result = self.browser_controller.execute_js([js])
+            self.browser_controller.wait.until(ec.text_to_be_present_in_element_value((By.CSS_SELECTOR, param_list[0]), param_list[1]))
 
-            assert param_list[1] not in result
-
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
-
-            Printer.printer('assert_value_not_contains_success', [param_list[1], result])
-            print('')
-
-            return [True]
-
-        except TimeoutException:
-            js = 'return document.querySelector(\'' + param_list[0] + '\').value;'
-            result = self.browser_controller.execute_js([js])
-
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
-
-            Printer.printer('assert_value_not_contains_success', [param_list[1], result])
-            print('')
-
-            return [True]
-
-        except AssertionError:
             result_content = ''
 
             if len(param_list) > 2:
                 result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
 
-            result_content += Printer.printer('assert_value_not_contains_failure', [param_list[1], result]) + '\n\n'
+            result_content += Printer.printer('assert_value_not_contains_failure', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).get_attribute('value')]) + '\n\n'
             print('')
 
             return [False, result_content]
+
+        except TimeoutException:
+            if len(param_list) > 2:
+                Printer.printer('assert_comment', [param_list[2]])
+
+            Printer.printer('assert_value_not_contains_success', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).get_attribute('value')])
+            print('')
+
+            return [True]
