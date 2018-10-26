@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: python setup
-          command: pyenv global 3.5.2 && pip install selenium pyyaml
+          command: pyenv global 3.5.2 && pip install --upgrade pip && pip install selenium pyyaml
       - run:
           name: cli setup
           command: pip install -e ./easy-Tester/cli/
