@@ -1,4 +1,4 @@
-# coding:utf-8
+# -*- coding: utf-8 -*-
 
 # ブラウザ操作を行うクラス
 #
@@ -30,7 +30,7 @@ class BrowserController:
 
         self.browser = browser
 
-        if self.browser == 'Chrome':
+        if self.browser.lower() == 'chrome':
             if remote_flg:
                 self.driver = webdriver.Remote(
                     command_executor=remote_host_url,
@@ -38,12 +38,12 @@ class BrowserController:
                 )
             else:
                 self.driver = webdriver.Chrome()
-        elif self.browser == 'Firefox':
+        elif self.browser.lower() == 'firefox':
             self.driver = webdriver.Firefox(driver_path)
-        elif self.browser == 'Safari':
+        elif self.browser.lower() == 'safari':
             self.driver = webdriver.Safari(driver_path)
             self.fullscreen()
-            self.switch_by_window_handle(['0'])
+            self.switch_by_window_handle({'window_handle': '0'})
 
         self.action_chains = ActionChains(self.driver)
         self.alert = Alert(self.driver)
@@ -56,8 +56,8 @@ class BrowserController:
         self.temp = {}
 
     # URLにアクセス
-    def access_url(self, param_list):
-        self.driver.get(param_list[0])
+    def access(self, params):
+        self.driver.get(params['url'])
 
     # ブラウザを閉じる
     def close_browser(self):
@@ -68,17 +68,25 @@ class BrowserController:
         self.driver.close()
 
     # 別ウィンドウに切り替える
+    def switch_window(self, params):
+        if 'window_handle' in params:
+            self._switch_by_window_handle(params['window_handle'])
+        elif 'window_name' in params:
+            self._switch_by_window_name(params['window_name'])
+        elif 'frame' in params:
+            self._switch_by_frame(params['frame'])
+
     # handleによって（0から開いた順にhandleが格納される）
-    def switch_by_window_handle(self, param_list):
-        self.driver.switch_to.window(self.driver.window_handles[int(param_list[0])])
+    def _switch_by_window_handle(self, window_handle):
+        self.driver.switch_to.window(self.driver.window_handles[int(window_handle)])
 
     # nameによって
-    def switch_by_window_name(self, param_list):
-        self.driver.switch_to.window(param_list[0])
+    def _switch_by_window_name(self, window_name):
+        self.driver.switch_to.window(window_name)
 
     # 特定frameに切り替える
-    def switch_by_frame(self, param_list):
-        self.driver.switch_to.frame(self.get_element_by_css(param_list[0]))
+    def _switch_by_frame(self, frame):
+        self.driver.switch_to.frame(self.get_element(frame))
 
     # 切り替えたwindowやframeを元の方に戻す
     def switch_to_default(self):
@@ -87,7 +95,7 @@ class BrowserController:
     # 新規タブを開く
     def open_new_tab(self):
         js = "window.open();"
-        self.execute_js([js])
+        self.execute_js({'js': js})
 
     # ブラウザを最大化する
     # Mac
@@ -95,8 +103,8 @@ class BrowserController:
         self.driver.maximize_window()
 
     # スクリーンショット
-    def screenshot(self, param_list):
-        self.driver.get_screenshot_as_file(self.artifacts_path + param_list[0] + '.png')
+    def screenshot(self, params):
+        self.driver.get_screenshot_as_file(self.artifacts_path + params['file_name'] + '.png')
 
     # # スクリーンショットを撮る
     # def screenshotByFilename(self, param_list):
@@ -174,98 +182,106 @@ class BrowserController:
     #     stitched_image.save(file_path)
 
     # ダイアログの[OK]ボタン/[Cancel]ボタンをクリックする
-    def dialog_answer(self, param_list):
+    def dialog_answer(self, params):
         self.wait.until(ec.alert_is_present())
 
-        if param_list[0] == 'ok':
+        if params['answer'] == 'ok':
             self.alert.accept()
-        elif param_list[0] == 'cancel':
+        elif params['answer'] == 'cancel':
             self.alert.dismiss()
 
     # 要素を取得
-    def get_element_by_css(self, css):
-        self.scroll_by_css([css])
+    def get_element(self, css):
+        self.scroll({'css': css})
 
-        self.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, css)))
+        self.wait.until(ec.visibility_of_element_located((By.CSS_SELECTOR, css)))
         return self.driver.find_element_by_css_selector(css)
 
     # フォームに入力
-    def input_by_css(self, param_list):
-        element = self.get_element_by_css(param_list[0])
+    def input(self, params):
+        element = self.get_element(params['css'])
 
-        self.wait.until(ec.visibility_of_element_located((By.CSS_SELECTOR, param_list[0])))
-        self.input_value_by_css([param_list[0], ''])
-        element.send_keys([param_list[1]])
+        self.wait.until(ec.visibility_of_element_located((By.CSS_SELECTOR, params['css'])))
+        self.input_value({'css': params['css'], 'input_data': ''})
+        element.send_keys([params['input_data']])
 
-    def input_inner_html_by_css(self, param_list):
-        self.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
-        js = 'document.querySelector(\'' + param_list[0] + '\').innerHTML = \'' + param_list[1] + '\';'
-        self.execute_js([js])
+    # 要素のvalueに値を入れる
+    def input_value(self, params):
+        self.wait.until(ec.visibility_of_element_located((By.CSS_SELECTOR, params['css'])))
+
+        js = 'return document.querySelector(\'' + params['css'] + '\').value;'
+        self.temp['original_value'] = self.execute_js({'js': js})
+
+        js = 'document.querySelector(\'' + params['css'] + '\').value = \'' + params['input_data'] + '\';'
+        self.execute_js({'js': js})
+
+    # input_value によって変更されたvalueを元の値に戻す
+    def input_original_value(self, params):
+        self.wait.until(ec.visibility_of_element_located((By.CSS_SELECTOR, params['css'])))
+        js = 'document.querySelector(\'' + params['css'] + '\').value = \'' + self.temp['original_value'] + '\';'
+        self.execute_js({'js': js})
+
+    # HTMLを挿入
+    def input_inner_html(self, params):
+        self.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
+        js = 'document.querySelector(\'' + params['css'] + '\').innerHTML = \'' + params['input_data'] + '\';'
+        self.execute_js({'js': js})
 
     # 要素をクリック
-    def click_by_css(self, param_list):
-        element = self.get_element_by_css(param_list[0])
+    def click(self, params):
+        element = self.get_element(params['css'])
 
-        self.wait.until(ec.element_to_be_clickable((By.CSS_SELECTOR, param_list[0])))
+        self.wait.until(ec.element_to_be_clickable((By.CSS_SELECTOR, params['css'])))
         element.click()
 
     # 要素をマウスホバー（マウスオーバー）
-    def mouse_hover_by_css(self, param_list):
-        element = self.get_element_by_css(param_list[0])
+    def mouse_hover(self, params):
+        element = self.get_element(params['css'])
 
-        self.wait.until(ec.visibility_of_element_located((By.CSS_SELECTOR, param_list[0])))
+        self.wait.until(ec.visibility_of_element_located((By.CSS_SELECTOR, params['css'])))
         self.action_chains.reset_action()
         self.action_chains.move_to_element(element)
         self.action_chains.perform()
 
     # 要素までスクロール
-    def scroll_by_css(self, param_list):
-        self.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
-        js = 'document.querySelector(\'' + param_list[0] + '\').scrollIntoView(true);'
-        self.execute_js([js])
+    def scroll(self, params):
+        self.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
+        js = 'document.querySelector(\'' + params['css'] + '\').scrollIntoView(true);'
+        self.execute_js({'js': js})
 
-    # 要素のvalueに値を入れる
-    def input_value_by_css(self, param_list):
-        self.wait.until(ec.visibility_of_element_located((By.CSS_SELECTOR, param_list[0])))
-
-        js = 'return document.querySelector(\'' + param_list[0] + '\').value;'
-        self.temp['original_value'] = self.execute_js([js])
-
-        js = 'document.querySelector(\'' + param_list[0] + '\').value = \'' + param_list[1] + '\';'
-        self.execute_js([js])
-
-    # inputValueBy~ によって変更されたvalueを元の値に戻す
-    def input_original_value_by_css(self, param_list):
-        self.wait.until(ec.visibility_of_element_located((By.CSS_SELECTOR, param_list[0])))
-        js = 'document.querySelector(\'' + param_list[0] + '\').value = \'' + self.temp['original_value'] + '\';'
-        self.execute_js([js])
+    # SelectBoxを選択
+    def select(self, params):
+        if 'index' in params:
+            self._select_by_index(params)
+        elif 'text' in params:
+            self._select_by_text(params)
 
     # Indexによって選択
-    def select_by_index(self, param_list):
-        element = self.get_element_by_css(param_list[1])
+    def _select_by_index(self, params):
+        element = self.get_element(params['css'])
 
-        self.wait.until(ec.element_located_to_be_selected((By.CSS_SELECTOR, param_list[1])))
+        self.wait.until(ec.element_located_to_be_selected((By.CSS_SELECTOR, params['css'])))
         select = Select(element)
-        select.select_by_index(param_list[0])
+        select.select_by_index(params['index'])
 
     # Textによって選択
-    def select_by_text(self, param_list):
-        element = self.get_element_by_css(param_list[1])
+    def _select_by_text(self, params):
+        element = self.get_element(params['css'])
 
-        self.wait.until(ec.element_located_to_be_selected((By.CSS_SELECTOR, param_list[1])))
+        self.wait.until(ec.element_located_to_be_selected((By.CSS_SELECTOR, params['css'])))
         select = Select(element)
-        select.select_by_visible_text(param_list[0])
+        select.select_by_visible_text(params['text'])
 
     # javascriptを実行する
-    def execute_js(self, param_list):
+    def execute_js(self, params):
         try:
-            if param_list[0].count('return'):
-                return self.driver.execute_script(param_list[0])
+            if params['js'].count('return'):
+                return self.driver.execute_script(params['js'])
             else:
-                self.driver.execute_script(param_list[0])
+                self.driver.execute_script(params['js'])
         except:
             pass
 
     # 処理を指定秒数だけ止める
-    def sleep_by_seconds(self, param_list):
-        sleep(int(param_list[0]))
+    def sleep(self, params):
+        sleep(int(params['seconds']))

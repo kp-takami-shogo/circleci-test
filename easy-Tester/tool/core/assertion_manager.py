@@ -1,4 +1,4 @@
-# coding:utf-8
+# -*- coding: utf-8 -*-
 
 import sys
 import os
@@ -49,8 +49,8 @@ class AssertionManager:
         self.browser_controller = browser_controller
         self.assertioner.set_browser_controller(browser_controller)
 
-    def assertion(self, testsuite_name, testcase_name, assertion_key, param_list):
-        result = eval('self.assertioner.' + AssertionSetting.get_assertion(assertion_key))(param_list)
+    def assertion(self, testsuite_name, testcase_name, assertion_key, params):
+        result = eval('self.assertioner.' + AssertionSetting.get_assertion(assertion_key))(params)
 
         self.assertion_count_per_testcase += 1
 
@@ -62,8 +62,9 @@ class AssertionManager:
             self.set_testcase_result('failure')
             self.add_testcase_content(result[1])
 
-            self.browser_controller.screenshot(
-                [testsuite_name + '-' + testcase_name + '-' + str(self.assertion_failure_count_per_testcase)])
+            self.browser_controller.screenshot({
+                'file_name': testsuite_name + '-' + testcase_name + '-' + str(self.assertion_failure_count_per_testcase)
+            })
 
     def get_results(self):
         return self.results

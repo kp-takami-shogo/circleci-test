@@ -1,10 +1,14 @@
 - assert:
-    titleContain:
-      expected: 'CircleCI'
+    title_contain:
+      expect: 'CircleCI'
       comment: 'タイトルにCircleCIが含まれているか'
 
 - assert:
-    textContain:
+    text_contain:
       css: '#test'
-      expected: 'aaa'
+      expect: 'aaa'
       comment: 'aaaという文字が表示されているか'
+
+- input:
+    css: '#test-input'
+    input_data: 'aaa'

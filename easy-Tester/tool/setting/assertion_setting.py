@@ -1,4 +1,4 @@
-# coding:utf-8
+# -*- coding: utf-8 -*-
 
 # Assertionメソッド設定クラス
 
@@ -6,32 +6,32 @@
 class AssertionSetting:
 
     assert_setting = {
-        'urlEqual': 'assert_url_equals',
-        'urlContain': 'assert_url_contains',
+        'url_equal': 'assert_url_equals',
+        'url_contain': 'assert_url_contains',
 
-        'titleEqual': 'assert_title_equals',
-        'titleContain': 'assert_title_contains',
+        'title_equal': 'assert_title_equals',
+        'title_contain': 'assert_title_contains',
 
-        'innerHTMLContain': 'assert_inner_html_contains',
-        'innerHTMLNotContain': 'assert_inner_html_not_contains',
+        'inner_html_contain': 'assert_inner_html_contains',
+        'inner_html_not_contain': 'assert_inner_html_not_contains',
 
-        'attributeEqual': 'assert_attribute_equals',
-        'attributeContain': 'assert_attribute_contains',
+        'attribute_equal': 'assert_attribute_equals',
+        'attribute_contain': 'assert_attribute_contains',
 
-        'textContain': 'assert_text_contains',
-        'textNotContain': 'assert_text_not_contains',
+        'text_contain': 'assert_text_contains',
+        'text_not_contain': 'assert_text_not_contains',
 
-        'classExist': 'assert_class_exist',
-        'classNotExist': 'assert_class_not_exist',
+        'class_exist': 'assert_class_exist',
+        'class_not_exist': 'assert_class_not_exist',
 
-        'cssPropertyEqual': 'assert_css_property_equals',
+        'css_property_equal': 'assert_css_property_equals',
 
-        'elementExist': 'assert_element_exist',
-        'elementNotExist': 'assert_element_not_exist',
+        'element_exist': 'assert_element_exist',
+        'element_not_exist': 'assert_element_not_exist',
 
-        'valueEqual': 'assert_value_equals',
-        'valueContain': 'assert_value_contains',
-        'valueNotContain': 'assert_value_not_contains'
+        'value_equal': 'assert_value_equals',
+        'value_contain': 'assert_value_contains',
+        'value_not_contain': 'assert_value_not_contains'
     }
 
     @staticmethod

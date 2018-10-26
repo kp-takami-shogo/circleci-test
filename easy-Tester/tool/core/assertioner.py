@@ -1,4 +1,4 @@
-# coding:utf-8
+# -*- coding: utf-8 -*-
 
 # アサーションを行うクラス
 #
@@ -27,14 +27,14 @@ class Assertioner:
         self.browser_controller = browser_controller
 
     # 期待値とURLが等しいか
-    def assert_url_equals(self, param_list):
+    def assert_url_equals(self, params):
         try:
-            self.browser_controller.wait.until(ec.url_to_be(param_list[0]))
+            self.browser_controller.wait.until(ec.url_to_be(params['expect']))
 
-            if len(param_list) > 1:
-                Printer.printer('assert_comment', [param_list[1]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_url_equals_success', [param_list[0], self.browser_controller.driver.current_url])
+            Printer.printer('assert_url_equals_success', [params['expect'], self.browser_controller.driver.current_url])
             print('')
 
             return [True]
@@ -42,23 +42,23 @@ class Assertioner:
         except TimeoutException:
             result_content = ''
 
-            if len(param_list) > 1:
-                result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_url_equals_failure', [param_list[0], self.browser_controller.driver.current_url]) + '\n\n'
+            result_content += Printer.printer('assert_url_equals_failure', [params['expect'], self.browser_controller.driver.current_url]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値がURLに含まれるか
-    def assert_url_contains(self, param_list):
+    def assert_url_contains(self, params):
         try:
-            self.browser_controller.wait.until(ec.url_contains(param_list[0]))
+            self.browser_controller.wait.until(ec.url_contains(params['expect']))
 
-            if len(param_list) > 1:
-                Printer.printer('assert_comment', [param_list[1]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_url_contains_success', [param_list[0], self.browser_controller.driver.current_url])
+            Printer.printer('assert_url_contains_success', [params['expect'], self.browser_controller.driver.current_url])
             print('')
 
             return [True]
@@ -66,23 +66,23 @@ class Assertioner:
         except TimeoutException:
             result_content = ''
 
-            if len(param_list) > 1:
-                result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_url_contains_failure', [param_list[0], self.browser_controller.driver.current_url]) + '\n\n'
+            result_content += Printer.printer('assert_url_contains_failure', [params['expect'], self.browser_controller.driver.current_url]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値とTitleが等しいか
-    def assert_title_equals(self, param_list):
+    def assert_title_equals(self, params):
         try:
-            self.browser_controller.wait.until(ec.title_is(param_list[0]))
+            self.browser_controller.wait.until(ec.title_is(params['expect']))
 
-            if len(param_list) > 1:
-                Printer.printer('assert_comment', [param_list[1]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_title_equals_success', [param_list[0], self.browser_controller.driver.title])
+            Printer.printer('assert_title_equals_success', [params['expect'], self.browser_controller.driver.title])
             print('')
 
             return [True]
@@ -90,23 +90,23 @@ class Assertioner:
         except TimeoutException:
             result_content = ''
 
-            if len(param_list) > 1:
-                result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_title_equals_failure', [param_list[0], self.browser_controller.driver.title]) + '\n\n'
+            result_content += Printer.printer('assert_title_equals_failure', [params['expect'], self.browser_controller.driver.title]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値がTitleに含まれるか
-    def assert_title_contains(self, param_list):
+    def assert_title_contains(self, params):
         try:
-            self.browser_controller.wait.until(ec.title_contains(param_list[0]))
+            self.browser_controller.wait.until(ec.title_contains(params['expect']))
 
-            if len(param_list) > 1:
-                Printer.printer('assert_comment', [param_list[1]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_title_contains_success', [param_list[0], self.browser_controller.driver.title])
+            Printer.printer('assert_title_contains_success', [params['expect'], self.browser_controller.driver.title])
             print('')
 
             return [True]
@@ -114,28 +114,28 @@ class Assertioner:
         except TimeoutException:
             result_content = ''
 
-            if len(param_list) > 1:
-                result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_title_contains_failure', [param_list[0], self.browser_controller.driver.title]) + '\n\n'
+            result_content += Printer.printer('assert_title_contains_failure', [params['expect'], self.browser_controller.driver.title]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値がInnerHTMLに含まれるか
-    def assert_inner_html_contains(self, param_list):
-        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+    def assert_inner_html_contains(self, params):
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
 
-        js = 'return document.querySelector(\'' + param_list[0] + '\').innerHTML'
-        result = self.browser_controller.execute_js([js])
+        js = 'return document.querySelector(\'' + params['css'] + '\').innerHTML'
+        result = self.browser_controller.execute_js({'js': js})
 
         try:
-            assert param_list[1] in result
+            assert params['expect'] in result
 
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_innerhtml_contains_success', [param_list[1], result])
+            Printer.printer('assert_inner_html_contains_success', [params['expect'], result])
             print('')
 
             return [True]
@@ -143,28 +143,28 @@ class Assertioner:
         except AssertionError:
             result_content = ''
 
-            if len(param_list) > 2:
-                result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_innerhtml_contains_failure', [param_list[1], result]) + '\n\n'
+            result_content += Printer.printer('assert_inner_html_contains_failure', [params['expect'], result]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値がInnerHTMLに含まれないか
-    def assert_inner_html_not_contains(self, param_list):
-        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+    def assert_inner_html_not_contains(self, params):
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
 
-        js = 'return document.querySelector(\'' + param_list[0] + '\').innerHTML'
-        result = self.browser_controller.execute_js([js])
+        js = 'return document.querySelector(\'' + params['css'] + '\').innerHTML'
+        result = self.browser_controller.execute_js({'js': js})
 
         try:
-            assert param_list[1] not in result
+            assert params['expect'] not in result
 
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_innerhtml_not_contains_success', [param_list[1], result])
+            Printer.printer('assert_inner_html_not_contains_success', [params['expect'], result])
             print('')
 
             return [True]
@@ -172,28 +172,28 @@ class Assertioner:
         except AssertionError:
             result_content = ''
 
-            if len(param_list) > 2:
-                result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_innerhtml_not_contains_failure', [param_list[1], result]) + '\n\n'
+            result_content += Printer.printer('assert_inner_html_not_contains_failure', [params['expect'], result]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値とAttributeが等しいか
-    def assert_attribute_equals(self, param_list):
-        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+    def assert_attribute_equals(self, params):
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
 
-        js = 'return document.querySelector(\'' + param_list[0] + '\').getAttribute(\'' + param_list[1] + '\');'
-        result = self.browser_controller.execute_js([js])
+        js = 'return document.querySelector(\'' + params['css'] + '\').getAttribute(\'' + params['attr'] + '\');'
+        result = self.browser_controller.execute_js({'js': js})
 
         try:
-            assert param_list[2] == result
+            assert params['expect'] == result
 
-            if len(param_list) > 3:
-                Printer.printer('assert_comment', [param_list[3]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_attribute_equals_success', [param_list[2], result])
+            Printer.printer('assert_attribute_equals_success', [params['expect'], result])
             print('')
 
             return [True]
@@ -201,28 +201,28 @@ class Assertioner:
         except AssertionError:
             result_content = ''
 
-            if len(param_list) > 3:
-                result_content += Printer.printer('assert_comment', [param_list[3]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_attribute_equals_failure', [param_list[2], result]) + '\n\n'
+            result_content += Printer.printer('assert_attribute_equals_failure', [params['expect'], result]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値がAttributeに含まれるか
-    def assert_attribute_contains(self, param_list):
-        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+    def assert_attribute_contains(self, params):
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
 
-        js = 'return document.querySelector(\'' + param_list[0] + '\').getAttribute(\'' + param_list[1] + '\');'
-        result = self.browser_controller.execute_js([js])
+        js = 'return document.querySelector(\'' + params['css'] + '\').getAttribute(\'' + params['attr'] + '\');'
+        result = self.browser_controller.execute_js({'js': js})
 
         try:
-            assert param_list[2] in result
+            assert params['expect'] in result
 
-            if len(param_list) > 3:
-                Printer.printer('assert_comment', [param_list[3]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_attribute_contains_success', [param_list[2], result])
+            Printer.printer('assert_attribute_contains_success', [params['expect'], result])
             print('')
 
             return [True]
@@ -230,23 +230,23 @@ class Assertioner:
         except AssertionError:
             result_content = ''
 
-            if len(param_list) > 3:
-                result_content += Printer.printer('assert_comment', [param_list[3]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_attribute_contains_failure', [param_list[2], result]) + '\n\n'
+            result_content += Printer.printer('assert_attribute_contains_failure', [params['expect'], result]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値がTextに含まれるか
-    def assert_text_contains(self, param_list):
+    def assert_text_contains(self, params):
         try:
-            self.browser_controller.wait.until(ec.text_to_be_present_in_element((By.CSS_SELECTOR, param_list[0]), param_list[1]))
+            self.browser_controller.wait.until(ec.text_to_be_present_in_element((By.CSS_SELECTOR, params['css']), params['expect']))
 
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_text_contains_success', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).text])
+            Printer.printer('assert_text_contains_success', [params['expect'], self.browser_controller.get_element(params['css']).text])
             print('')
 
             return [True]
@@ -254,57 +254,57 @@ class Assertioner:
         except TimeoutException:
             result_content = ''
 
-            if len(param_list) > 2:
-                result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_text_contains_failure', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).text]) + '\n\n'
+            result_content += Printer.printer('assert_text_contains_failure', [params['expect'], self.browser_controller.get_element(params['css']).text]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値がTextに含まれないか
-    def assert_text_not_contains(self, param_list):
+    def assert_text_not_contains(self, params):
         try:
-            self.browser_controller.wait.until(ec.text_to_be_present_in_element((By.CSS_SELECTOR, param_list[0]), param_list[1]))
+            self.browser_controller.wait.until(ec.text_to_be_present_in_element((By.CSS_SELECTOR, params['css']), params['expect']))
 
             result_content = ''
 
-            if len(param_list) > 2:
-                result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_text_not_contains_failure', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).text]) + '\n\n'
+            result_content += Printer.printer('assert_text_not_contains_failure', [params['expect'], self.browser_controller.get_element(params['css']).text]) + '\n\n'
             print('')
 
             return [False, result_content]
 
         except TimeoutException:
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_text_not_contains_success', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).text])
+            Printer.printer('assert_text_not_contains_success', [params['expect'], self.browser_controller.get_element(params['css']).text])
             print('')
 
             return [True]
 
     # ClassNameに期待値が存在するか
-    def assert_class_exist(self, param_list):
-        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+    def assert_class_exist(self, params):
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
 
-        js = 'return document.querySelector(\'' + param_list[0] + '\').className;'
-        class_names = self.browser_controller.execute_js([js])
+        js = 'return document.querySelector(\'' + params['css'] + '\').className;'
+        class_names = self.browser_controller.execute_js({'js': js})
 
         try:
             match_result = False
             for class_name in class_names.split():
-                if re.match('^' + param_list[1] + '$', class_name):
+                if re.match('^' + params['expect'] + '$', class_name):
                     match_result = True
 
             assert match_result
 
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_class_exist_success', [param_list[1]])
+            Printer.printer('assert_class_exist_success', [params['expect']])
             print('')
 
             return [True]
@@ -312,33 +312,33 @@ class Assertioner:
         except AssertionError:
             result_content = ''
 
-            if len(param_list) > 2:
-                result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_class_exist_failure', [param_list[1]]) + '\n\n'
+            result_content += Printer.printer('assert_class_exist_failure', [params['expect']]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # ClassNameに期待値が存在しないか
-    def assert_class_not_exist(self, param_list):
-        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+    def assert_class_not_exist(self, params):
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
 
-        js = 'return document.querySelector(\'' + param_list[0] + '\').className;'
-        class_names = self.browser_controller.execute_js([js])
+        js = 'return document.querySelector(\'' + params['css'] + '\').className;'
+        class_names = self.browser_controller.execute_js({'js': js})
 
         try:
             match_result = True
             for class_name in class_names.split():
-                if re.match('^' + param_list[1] + '$', class_name):
+                if re.match('^' + params['expect'] + '$', class_name):
                     match_result = False
 
             assert match_result
 
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_class_not_exist_success', [param_list[1]])
+            Printer.printer('assert_class_not_exist_success', [params['expect']])
             print('')
 
             return [True]
@@ -346,28 +346,28 @@ class Assertioner:
         except AssertionError:
             result_content = ''
 
-            if len(param_list) > 2:
-                result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_class_not_exist_failure', [param_list[1]]) + '\n\n'
+            result_content += Printer.printer('assert_class_not_exist_failure', [params['expect']]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値とCssPropertyが等しいか
-    def assert_css_property_equals(self, param_list):
-        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+    def assert_css_property_equals(self, params):
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
 
-        js = 'return document.querySelector(\'' + param_list[0] + '\').style.' + param_list[1] + ';'
-        result = self.browser_controller.execute_js([js])
+        js = 'return document.querySelector(\'' + params['css'] + '\').style.' + params['property'] + ';'
+        result = self.browser_controller.execute_js({'js': js})
 
         try:
-            assert param_list[2] == result
+            assert params['expect'] == result
 
-            if len(param_list) > 3:
-                Printer.printer('assert_comment', [param_list[3]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_css_property_equals_success', [param_list[2], result])
+            Printer.printer('assert_css_property_equals_success', [params['expect'], result])
             print('')
 
             return [True]
@@ -375,23 +375,23 @@ class Assertioner:
         except AssertionError:
             result_content = ''
 
-            if len(param_list) > 3:
-                result_content += Printer.printer('assert_comment', [param_list[3]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_css_property_equals_failure', [param_list[2], result]) + '\n\n'
+            result_content += Printer.printer('assert_css_property_equals_failure', [params['expect'], result]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 特定のElementが存在するか
-    def assert_element_exist(self, param_list):
+    def assert_element_exist(self, params):
         try:
-            self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+            self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
 
-            if len(param_list) > 1:
-                Printer.printer('assert_comment', [param_list[1]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_element_exist_success', [param_list[0]])
+            Printer.printer('assert_element_exist_success', [params['expect']])
             print('')
 
             return [True]
@@ -399,51 +399,51 @@ class Assertioner:
         except TimeoutException:
             result_content = ''
 
-            if len(param_list) > 1:
-                result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_element_exist_failure', [param_list[0]]) + '\n\n'
+            result_content += Printer.printer('assert_element_exist_failure', [params['expect']]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 特定のElementが存在しないか
-    def assert_element_not_exist(self, param_list):
+    def assert_element_not_exist(self, params):
         try:
-            self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param_list[0])))
+            self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
 
             result_content = ''
 
-            if len(param_list) > 1:
-                result_content += Printer.printer('assert_comment', [param_list[1]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_element_not_exist_failure', [param_list[0]]) + '\n\n'
+            result_content += Printer.printer('assert_element_not_exist_failure', [params['css']]) + '\n\n'
             print('')
 
             return [False, result_content]
 
         except TimeoutException:
-            if len(param_list) > 1:
-                Printer.printer('assert_comment', [param_list[1]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_element_not_exist_success', [param_list[0]])
+            Printer.printer('assert_element_not_exist_success', [params['css']])
             print('')
 
             return [True]
 
     # 期待値とValueが等しいか
-    def assert_value_equals(self, param_list):
+    def assert_value_equals(self, params):
         try:
-            self.browser_controller.wait.until(ec.text_to_be_present_in_element_value((By.CSS_SELECTOR, param_list[0]), param_list[1]))
+            self.browser_controller.wait.until(ec.text_to_be_present_in_element_value((By.CSS_SELECTOR, params['css']), params['expect']))
 
-            result = self.browser_controller.get_element_by_css(param_list[0]).get_attribute('value')
+            result = self.browser_controller.get_element(params['css']).get_attribute('value')
 
-            assert param_list[1] == result
+            assert params['expect'] == result
 
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_value_equals_success', [param_list[1], result])
+            Printer.printer('assert_value_equals_success', [params['expect'], result])
             print('')
 
             return [True]
@@ -451,10 +451,10 @@ class Assertioner:
         except TimeoutException:
             result_content = ''
 
-            if len(param_list) > 2:
-                result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_value_equals_failure', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).get_attribute('value')]) + '\n\n'
+            result_content += Printer.printer('assert_value_equals_failure', [params['expect'], self.browser_controller.get_element(params['css']).get_attribute('value')]) + '\n\n'
             print('')
 
             return [False, result_content]
@@ -462,23 +462,23 @@ class Assertioner:
         except AssertionError:
             result_content = ''
 
-            if len(param_list) > 2:
-                result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_value_equals_failure', [param_list[1], result]) + '\n\n'
+            result_content += Printer.printer('assert_value_equals_failure', [params['expect'], result]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値がValueに含まれるか
-    def assert_value_contains(self, param_list):
+    def assert_value_contains(self, params):
         try:
-            self.browser_controller.wait.until(ec.text_to_be_present_in_element_value((By.CSS_SELECTOR, param_list[0]), param_list[1]))
+            self.browser_controller.wait.until(ec.text_to_be_present_in_element_value((By.CSS_SELECTOR, params['css']), params['expect']))
 
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_value_contains_success', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).get_attribute('value')])
+            Printer.printer('assert_value_contains_success', [params['expect'], self.browser_controller.get_element(params['css']).get_attribute('value')])
             print('')
 
             return [True]
@@ -486,34 +486,34 @@ class Assertioner:
         except TimeoutException:
             result_content = ''
 
-            if len(param_list) > 2:
-                result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_value_contains_failure', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).get_attribute('value')]) + '\n\n'
+            result_content += Printer.printer('assert_value_contains_failure', [params['expect'], self.browser_controller.get_element(params['css']).get_attribute('value')]) + '\n\n'
             print('')
 
             return [False, result_content]
 
     # 期待値がValueに含まれないか
-    def assert_value_not_contains(self, param_list):
+    def assert_value_not_contains(self, params):
         try:
-            self.browser_controller.wait.until(ec.text_to_be_present_in_element_value((By.CSS_SELECTOR, param_list[0]), param_list[1]))
+            self.browser_controller.wait.until(ec.text_to_be_present_in_element_value((By.CSS_SELECTOR, params['css']), params['expect']))
 
             result_content = ''
 
-            if len(param_list) > 2:
-                result_content += Printer.printer('assert_comment', [param_list[2]]) + '\n'
+            if 'comment' in params:
+                result_content += Printer.printer('assert_comment', [params['comment']]) + '\n'
 
-            result_content += Printer.printer('assert_value_not_contains_failure', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).get_attribute('value')]) + '\n\n'
+            result_content += Printer.printer('assert_value_not_contains_failure', [params['expect'], self.browser_controller.get_element(params['css']).get_attribute('value')]) + '\n\n'
             print('')
 
             return [False, result_content]
 
         except TimeoutException:
-            if len(param_list) > 2:
-                Printer.printer('assert_comment', [param_list[2]])
+            if 'comment' in params:
+                Printer.printer('assert_comment', [params['comment']])
 
-            Printer.printer('assert_value_not_contains_success', [param_list[1], self.browser_controller.get_element_by_css(param_list[0]).get_attribute('value')])
+            Printer.printer('assert_value_not_contains_success', [params['expect'], self.browser_controller.get_element(params['css']).get_attribute('value')])
             print('')
 
             return [True]

@@ -1,4 +1,4 @@
-# coding:utf-8
+# -*- coding: utf-8 -*-
 
 import sys
 import os
@@ -33,11 +33,11 @@ class Printer:
         'assert_title_contains_success': '      ' + PrintDecoration.GREEN + 'Success' + PrintDecoration.END + ' title: ( {0[0]} ) contains ( {0[1]} )',
         'assert_title_contains_failure': '      ' + PrintDecoration.RED + 'Failure' + PrintDecoration.END + ' title: ( {0[0]} ) contains ( {0[1]} )',
 
-        'assert_innerhtml_contains_success': '      ' + PrintDecoration.GREEN + 'Success' + PrintDecoration.END + ' innerHTML: ( {0[0]} ) contains ( {0[1]} )',
-        'assert_innerhtml_contains_failure': '      ' + PrintDecoration.RED + 'Failure' + PrintDecoration.END + ' innerHTML: ( {0[0]} ) contains ( {0[1]} )',
+        'assert_inner_html_contains_success': '      ' + PrintDecoration.GREEN + 'Success' + PrintDecoration.END + ' innerHTML: ( {0[0]} ) contains ( {0[1]} )',
+        'assert_inner_html_contains_failure': '      ' + PrintDecoration.RED + 'Failure' + PrintDecoration.END + ' innerHTML: ( {0[0]} ) contains ( {0[1]} )',
 
-        'assert_innerhtml_not_contains_success': '      ' + PrintDecoration.GREEN + 'Success' + PrintDecoration.END + ' innerHTML: ( {0[0]} ) not contains ( {0[1]} )',
-        'assert_innerhtml_not_contains_failure': '      ' + PrintDecoration.RED + 'Failure' + PrintDecoration.END + ' innerHTML: ( {0[0]} ) not contains ( {0[1]} )',
+        'assert_inner_html_not_contains_success': '      ' + PrintDecoration.GREEN + 'Success' + PrintDecoration.END + ' innerHTML: ( {0[0]} ) not contains ( {0[1]} )',
+        'assert_inner_html_not_contains_failure': '      ' + PrintDecoration.RED + 'Failure' + PrintDecoration.END + ' innerHTML: ( {0[0]} ) not contains ( {0[1]} )',
 
         'assert_attribute_equals_success': '      ' + PrintDecoration.GREEN + 'Success' + PrintDecoration.END + ' attribute: ( {0[0]} ) equals ( {0[1]} )',
         'assert_attribute_equals_failure': '      ' + PrintDecoration.RED + 'Failure' + PrintDecoration.END + ' attribute: ( {0[0]} ) equals ( {0[1]} )',
@@ -101,11 +101,11 @@ class Printer:
         'assert_title_contains_success': 'Success title: ( {0[0]} ) contains ( {0[1]} )',
         'assert_title_contains_failure': 'Failure title: ( {0[0]} ) contains ( {0[1]} )',
 
-        'assert_innerhtml_contains_success': 'Success innerHTML: ( {0[0]} ) contains ( {0[1]} )',
-        'assert_innerhtml_contains_failure': 'Failure innerHTML: ( {0[0]} ) contains ( {0[1]} )',
+        'assert_inner_html_contains_success': 'Success innerHTML: ( {0[0]} ) contains ( {0[1]} )',
+        'assert_inner_html_contains_failure': 'Failure innerHTML: ( {0[0]} ) contains ( {0[1]} )',
 
-        'assert_innerhtml_not_contains_success': 'Success innerHTML: ( {0[0]} ) not contains ( {0[1]} )',
-        'assert_innerhtml_not_contains_failure': 'Failure innerHTML: ( {0[0]} ) not contains ( {0[1]} )',
+        'assert_inner_html_not_contains_success': 'Success innerHTML: ( {0[0]} ) not contains ( {0[1]} )',
+        'assert_inner_html_not_contains_failure': 'Failure innerHTML: ( {0[0]} ) not contains ( {0[1]} )',
 
         'assert_attribute_equals_success': 'Success attribute: ( {0[0]} ) equals ( {0[1]} )',
         'assert_attribute_equals_failure': 'Failure attribute: ( {0[0]} ) equals ( {0[1]} )',

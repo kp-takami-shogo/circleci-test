@@ -1,4 +1,4 @@
-# coding:utf-8
+# -*- coding: utf-8 -*-
 
 # BrowserControlメソッド設定クラス
 
@@ -6,41 +6,38 @@
 class BrowserControlSetting:
 
     browser_control_setting = {
-        'accessUrl': 'access_url',
+        'access': 'access',
 
-        'closeBrowser': 'close_browser',
-        'closeCurrentWindow': 'close_current_window',
+        'close_browser': 'close_browser',
+        'close_current_window': 'close_current_window',
 
-        'switchToDefault': 'switch_to_default',
-        'switchWindowhandle': 'switch_by_window_handle',
-        'switchWindowname': 'switch_by_window_name',
-        'switchFrame': 'switch_by_frame',
+        'switch_to_default': 'switch_to_default',
+        'switch_window': 'switch_window',
 
-        'openNewTab': 'open_new_tab',
+        'open_new_tab': 'open_new_tab',
 
         'fullscreen': 'fullscreen',
 
-        'dialogAnswer': 'dialog_answer',
+        'dialog_answer': 'dialog_answer',
 
-        'getElementCss': 'get_element_by_css',
+        'get_element': 'get_element',
 
-        'inputCss': 'input_by_css',
-        'inputValueCss': 'input_value_by_css',
-        'inputOriginalValueCss': 'input_original_value_by_css',
-        'inputInnerHTMLCss': 'input_inner_html_by_css',
+        'input': 'input',
+        'input_value': 'input_value',
+        'input_original_value': 'input_original_value',
+        'input_inner_html': 'input_inner_html',
 
-        'clickCss': 'click_by_css',
+        'click': 'click',
 
-        'mouseHoverCss': 'mouse_hover_by_css',
+        'mouse_hover': 'mouse_hover',
 
-        'selectIndex': 'select_by_index',
-        'selectText': 'select_by_text',
+        'select': 'select',
 
-        'scrollCss': 'scroll_by_css',
+        'scroll': 'scroll',
 
-        'executeJs': 'execute_js',
+        'execute_js': 'execute_js',
 
-        'sleepSeconds': 'sleep_by_seconds'
+        'sleep': 'sleep'
     }
 
     @staticmethod

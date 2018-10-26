@@ -1,4 +1,6 @@
+cli/eT.egg-info
+test/
+
 .DS_Store
 __pycache__
-test/
 .idea

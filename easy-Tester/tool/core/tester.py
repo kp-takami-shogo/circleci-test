@@ -11,6 +11,8 @@ import sys
 import os
 import traceback
 
+from pprint import  pprint
+
 from test_builder import TestBuilder
 from timer import Timer
 from browser_controller import BrowserController
@@ -41,7 +43,7 @@ class Tester:
     # テスト実行
     def execute(self, *, browser='', url='', driver_path='',
                 remote_flg=0, remote_host_url='',
-                report_path='./result.xml', artifacts_path='./',
+                ci='', report_path='./result.xml', artifacts_path='./',
                 wait_seconds=5, sleep_time=0, debug_mode=False):
 
         self.sleep_time = sleep_time
@@ -51,13 +53,13 @@ class Tester:
 
         self.timer.start_testsuites()
 
-        for testsuite_name, testcase_list in self.test_builder.get_test().items():
+        for testsuite in self.test_builder.get_test():
             self.timer.start_testsuite()
 
-            Printer.printer('testsuite_name', [testsuite_name])
+            Printer.printer('testsuite_name', [testsuite['testsuite_name']])
             print('')
 
-            for testcase_name, process_list in testcase_list.items():
+            for testcase in testsuite['testcase_list']:
                 try:
                     self.timer.start_testcase()
 
@@ -72,21 +74,19 @@ class Tester:
 
                     self.assertion_manager.set_browser_controller(self.browser_controller)
 
-                    self.browser_controller.access_url([url])
+                    self.browser_controller.access({'url': url})
 
-                    Printer.printer('testcase_name', [testcase_name])
+                    Printer.printer('testcase_name', [testcase['testcase_name']])
 
-                    for process in process_list:
-
+                    for process in testcase['process_list']:
                         for process_name, params in process.items():
-
                             if self.sleep_time:
-                                self.browser_controller.sleep_by_seconds([self.sleep_time])
+                                self.browser_controller.sleep({'seconds': self.sleep_time})
 
                             if Tester.get_process_type(process_name) == 'browser_controller':
                                 self.execute_browser_controller_method(process_name, params)
                             else:
-                                self.execute_assertioner_method(testsuite_name, testcase_name, process_name, params)
+                                self.execute_assertioner_method(testsuite['testsuite_name'], testcase['testcase_name'], process_name, params)
 
                 except Exception:
                     Printer.printer('exception', [traceback.format_exc()])
@@ -96,19 +96,21 @@ class Tester:
                     self.assertion_manager.add_testsuite_error_count()
                     self.assertion_manager.set_testcase_result('error')
                     self.assertion_manager.add_testcase_content(traceback.format_exc())
-                    self.assertion_manager.add_testcase_results(testcase_name, self.timer.get_end_testcase_time())
+                    self.assertion_manager.add_testcase_results(testcase['testcase_name'], self.timer.get_end_testcase_time())
 
-                    self.browser_controller.screenshot([testsuite_name + '-' + testcase_name])
+                    self.browser_controller.screenshot({
+                        'file_name': testsuite['testsuite_name'] + '-' + testcase['testcase_name']
+                    })
 
                     self.browser_controller.close_browser()
 
                     continue
 
-                self.assertion_manager.add_testcase_results(testcase_name, self.timer.get_end_testcase_time())
+                self.assertion_manager.add_testcase_results(testcase['testcase_name'], self.timer.get_end_testcase_time())
 
                 self.browser_controller.close_browser()
 
-            self.assertion_manager.add_testsuite_result(testsuite_name, self.timer.get_end_testsuite_time())
+            self.assertion_manager.add_testsuite_result(testsuite['testsuite_name'], self.timer.get_end_testsuite_time())
 
         print('')
         Printer.printer('assert_result', [
@@ -125,7 +127,7 @@ class Tester:
 
         reporter.create_report(self.assertion_manager.get_results(), report_path=report_path)
 
-        if self.assertion_manager.get_total_assert_failures() is not 0:
+        if ci.lower() is 'circleci' and self.assertion_manager.get_total_assert_failures() is not 0:
             sys.exit(1)
 
     # testsuitesをセット
@@ -155,47 +157,31 @@ class Tester:
     def execute_browser_controller_method(self, process_name, params):
         config = self.test_builder.get_config()
 
-        if params is None or not params:
-            browser_control_key = process_name
-            param_list = []
-        else:
-            i = 0
-            by_item = ''
-            param_list = []
-            for param_name, param in params.items():
-                if i == 0:
-                    by_item = param_name.capitalize()
-
-                if param in config:
-                    param_list.append(config[param])
-                else:
-                    param_list.append(param)
-
-                i += 1
-
-            browser_control_key = process_name + by_item
+        if 'css' in params:
+            if params['css'] in config:
+                params['css'] = config[params['css']]
 
         if self.debug_mode:
-            Printer.printer('process', [browser_control_key, param_list])
+            Printer.printer('process', [process_name, params])
 
-        if not param_list:
-            eval('self.browser_controller.' + BrowserControlSetting.get_browser_control(browser_control_key))()
+        if not params:
+            eval('self.browser_controller.' + BrowserControlSetting.get_browser_control(process_name))()
         else:
-            eval('self.browser_controller.' + BrowserControlSetting.get_browser_control(browser_control_key))(param_list)
+            eval('self.browser_controller.' + BrowserControlSetting.get_browser_control(process_name))(params)
 
     # Assertionerのメソッドを実行
     def execute_assertioner_method(self, testsuite_name, testcase_name, process_name, assertion):
         config = self.test_builder.get_config()
 
-        param_list = []
-        for assertion_key, params in assertion.items():
-            for param in params.values():
-                if param in config:
-                    param_list.append(config[param])
-                else:
-                    param_list.append(param)
+        assertion_key = list(assertion.keys())[0]
 
-            if self.debug_mode:
-                Printer.printer('process', [process_name + ' ' + assertion_key, param_list])
+        params = assertion[assertion_key]
 
-        self.assertion_manager.assertion(testsuite_name, testcase_name, assertion_key, param_list)
+        if 'css' in params:
+            if params['css'] in config:
+                params['css'] = config[params['css']]
+
+        if self.debug_mode:
+            Printer.printer('process', [process_name + ' ' + assertion_key, params])
+
+        self.assertion_manager.assertion(testsuite_name, testcase_name, assertion_key, params)

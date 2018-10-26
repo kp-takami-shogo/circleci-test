@@ -16,6 +16,8 @@
 
 <span id="test">Test</span>
 
+<input type="text" id="test-input">
+
 </body>
 
 </html>
