@@ -8,10 +8,10 @@ jobs:
       - checkout
       - run:
           name: python setup
-          command: pyenv global 3.5.2 && pip install --upgrade pip && pip install selenium==3.8.0 pyyaml
+          command: pyenv global 3.5.2 && pip install --upgrade pip
       - run:
-          name: cli setup
-          command: pip install -e ./easy-Tester/cli/
+          name: easy-Tester setup
+          command: sh easy-Tester/setup.sh
       - run:
           name: docker-compose up -d
           command: cd docker && docker-compose up -d

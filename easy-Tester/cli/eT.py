@@ -7,7 +7,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '../tool/core/'))
 from runner import Runner
 
-TEST_PATH = os.path.join(os.path.dirname(__file__), '../test/')
+TEST_PATH = os.path.join(os.path.dirname(__file__), '../../eT-test/')
 
 
 @click.group('eT')
