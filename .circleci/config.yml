@@ -10,11 +10,14 @@ jobs:
           name: python setup
           command: pyenv global 3.5.2 && pip install selenium pyyaml
       - run:
+          name: cli setup
+          command: pip install -e ./easy-Tester/cli/
+      - run:
           name: docker-compose up -d
           command: cd docker && docker-compose up -d
       - run:
           name: test execute
-          command: python easy-Tester/test/circleci_test.testsuites.py
+          command: eT run
       - run:
           name: docker-compose down
           command: cd docker && docker-compose down
