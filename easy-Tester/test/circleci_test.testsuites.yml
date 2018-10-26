@@ -1,0 +1,36 @@
+version: 1
+
+testsuites:
+  name: 'CircleCI Test'
+  test:
+    - testsuite:
+        name: 'Test2'
+        test:
+          - testcase:
+              name: 'テスト2'
+              test:
+                - 'testcase/test.testcase.yml'
+                - 'testcase/test.testcase.yml'
+          - testcase:
+              name: 'テスト1'
+              test:
+                - 'testcase/test.testcase.yml'
+    - testsuite:
+        name: 'Test1'
+        test:
+          - testcase:
+              name: 'テスト3'
+              test:
+                - 'testcase/test.testcase.yml'
+          - testcase:
+              name: 'テスト1'
+              test:
+                - 'testcase/test.testcase.yml'
+
+execute:
+  browser: 'Chrome'
+  url: 'http://localhost'
+  cli: 'circleci'
+  report_path: 'reports/results.xml'
+  artifacts_path: 'artifacts/'
+  wait_seconds: 2
