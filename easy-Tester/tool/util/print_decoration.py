@@ -16,6 +16,6 @@ class PrintDecoration:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
     INVISIBLE = '\033[08m'
-    REVERCE = '\033[07m'
+    REVERSE = '\033[07m'
 
     END = '\033[0m'

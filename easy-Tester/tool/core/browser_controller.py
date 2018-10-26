@@ -43,7 +43,7 @@ class BrowserController:
         elif self.browser.lower() == 'safari':
             self.driver = webdriver.Safari(driver_path)
             self.fullscreen()
-            self.switch_by_window_handle({'window_handle': '0'})
+            self.switch_window({'window_handle': '0'})
 
         self.action_chains = ActionChains(self.driver)
         self.alert = Alert(self.driver)

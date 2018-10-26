@@ -12,3 +12,9 @@
 - input:
     css: '#test-input'
     input_data: 'aaa'
+
+- assert:
+    value_equal:
+      css: '#test-input'
+      expect: 'aaa'
+      comment: '入力欄にaaaが入力されているか'
