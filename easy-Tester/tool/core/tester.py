@@ -127,7 +127,7 @@ class Tester:
 
         reporter.create_report(self.assertion_manager.get_results(), report_path=report_path)
 
-        if ci.lower() is 'circleci' and self.assertion_manager.get_total_assert_failures() is not 0:
+        if ci.lower() == 'circleci' and self.assertion_manager.get_total_assert_failures() is not 0:
             sys.exit(1)
 
     # testsuitesをセット
