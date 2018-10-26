@@ -10,7 +10,6 @@ testsuites:
               name: 'テスト2'
               test:
                 - 'testcase/test.testcase.yml'
-                - 'testcase/test.testcase.yml'
           - testcase:
               name: 'テスト1'
               test:
