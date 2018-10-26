@@ -16,13 +16,14 @@ tester.set_testsuites('CircleCI Test')
 tester.add_testsuite('Test')
 
 tester.add_testcase('テスト', [
-    [TEST_PATH + 'testcase/test.testcase.yml']
+    TEST_PATH + 'testcase/test.testcase.yml'
 ])
 
 tester.execute(
     browser='Chrome',
     url='http://localhost',
-    wait_seconds=2,
+    ci='circleci',
     report_path=TEST_PATH + 'reports/results.xml',
-    artifacts_path=TEST_PATH + 'artifacts/'
+    artifacts_path=TEST_PATH + 'artifacts/',
+    wait_seconds=2
 )
