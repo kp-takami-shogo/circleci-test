@@ -7,6 +7,8 @@
 # driver webdriverインスタンス
 # action_chains ActionChainsインスタンス
 
+import os
+
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.action_chains import ActionChains
@@ -26,7 +28,7 @@ class BrowserController:
 
     # 初期化 & ブラウザ起動
     def __init__(self, *, browser='', driver_path='',
-                 remote_flg=0, remote_host_url='', artifacts_path='', wait_seconds=5):
+                 remote_flg=0, remote_host_url='', artifacts_dir='', wait_seconds=5):
 
         self.browser = browser
 
@@ -48,7 +50,7 @@ class BrowserController:
         self.action_chains = ActionChains(self.driver)
         self.alert = Alert(self.driver)
 
-        self.artifacts_path = artifacts_path
+        self.artifacts_dir = artifacts_dir
 
         self.wait = WebDriverWait(self.driver, wait_seconds)
         self.driver.implicitly_wait(wait_seconds)
@@ -104,7 +106,7 @@ class BrowserController:
 
     # スクリーンショット
     def screenshot(self, params):
-        self.driver.get_screenshot_as_file(self.artifacts_path + params['file_name'] + '.png')
+        self.driver.get_screenshot_as_file(os.path.join(self.artifacts_dir, params['file_name'] + '.png'))
 
     # # スクリーンショットを撮る
     # def screenshotByFilename(self, param_list):
@@ -247,6 +249,9 @@ class BrowserController:
     def scroll(self, params):
         self.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
         js = 'document.querySelector(\'' + params['css'] + '\').scrollIntoView(true);'
+        self.execute_js({'js': js})
+
+        js = 'window.scrollTo(0, window.pageYOffset - 10);'
         self.execute_js({'js': js})
 
     # SelectBoxを選択

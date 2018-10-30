@@ -63,7 +63,7 @@ class AssertionManager:
             self.add_testcase_content(result[1])
 
             self.browser_controller.screenshot({
-                'file_name': testsuite_name + '-' + testcase_name + '-' + str(self.assertion_failure_count_per_testcase)
+                'file_name': self.testsuites_name + '-' + testsuite_name + '-' + testcase_name + '-' + str(self.assertion_failure_count_per_testcase)
             })
 
     def get_results(self):

@@ -5,11 +5,11 @@ import sys
 import os
 import subprocess
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '../tool/core/'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'tool', 'core'))
 from runner import Runner
 
-LIB_PATH = os.path.join(os.path.dirname(__file__), '../')
-TEST_PATH = os.path.join(LIB_PATH, '../../eT-test/')
+LIB_PATH = os.path.join(os.path.dirname(__file__), '..')
+TEST_PATH = os.path.join(LIB_PATH, '..', 'eT-test')
 
 
 @click.group('eT')

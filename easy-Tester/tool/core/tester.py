@@ -19,11 +19,14 @@ from browser_controller import BrowserController
 from assertion_manager import AssertionManager
 from reporter import Reporter
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '../setting/'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'setting'))
 from browser_control_setting import BrowserControlSetting
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '../util/'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'util'))
 from printer import Printer
+
+
+TEST_PATH = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'eT-test')
 
 
 class Tester:
@@ -43,7 +46,7 @@ class Tester:
     # テスト実行
     def execute(self, *, browser='', url='', driver_path='',
                 remote_flg=0, remote_host_url='',
-                ci='', report_path='./result.xml', artifacts_path='./',
+                ci='', reports_dir=os.path.join(TEST_PATH, 'reports'), artifacts_dir=os.path.join(TEST_PATH, 'artifacts'),
                 wait_seconds=5, sleep_time=0, debug_mode=False):
 
         self.sleep_time = sleep_time
@@ -68,7 +71,7 @@ class Tester:
                         driver_path=driver_path,
                         remote_flg=remote_flg,
                         remote_host_url=remote_host_url,
-                        artifacts_path=artifacts_path,
+                        artifacts_dir=artifacts_dir,
                         wait_seconds=wait_seconds
                     )
 
@@ -99,7 +102,7 @@ class Tester:
                     self.assertion_manager.add_testcase_results(testcase['testcase_name'], self.timer.get_end_testcase_time())
 
                     self.browser_controller.screenshot({
-                        'file_name': testsuite['testsuite_name'] + '-' + testcase['testcase_name']
+                        'file_name': self.testsuites_name + '-' + testsuite['testsuite_name'] + '-' + testcase['testcase_name']
                     })
 
                     self.browser_controller.close_browser()
@@ -125,7 +128,7 @@ class Tester:
 
         reporter = Reporter()
 
-        reporter.create_report(self.assertion_manager.get_results(), report_path=report_path)
+        reporter.create_report(self.assertion_manager.get_results(), reports_dir=reports_dir)
 
         if ci.lower() == 'circleci' and self.assertion_manager.get_total_assert_failures() is not 0:
             sys.exit(1)

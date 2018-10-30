@@ -28,8 +28,6 @@ testsuites:
 
 execute:
   browser: 'Chrome'
-  url: 'http://localhost'
+  url: 'http://localhost:10004/circleci-test'
   ci: 'circleci'
-  report_path: 'reports/results.xml'
-  artifacts_path: 'artifacts/'
   wait_seconds: 2

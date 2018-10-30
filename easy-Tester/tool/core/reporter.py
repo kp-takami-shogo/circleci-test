@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 import xml.etree.ElementTree as et
 from xml.dom import minidom
 
@@ -7,7 +8,7 @@ from xml.dom import minidom
 class Reporter:
 
     # レポート作成
-    def create_report(self, result, report_path=''):
+    def create_report(self, result, reports_dir=''):
         testsuites = et.Element('testsuites')
         testsuites.set('name', result['testsuites_name'])
         testsuites.set('tests', str(result['testsuites_tests']))
@@ -44,7 +45,7 @@ class Reporter:
                 elif testcase_info['testcase_result'] == 'skipped':
                     et.SubElement(testcase, 'skipped')
 
-        Reporter.output_report(testsuites, report_path)
+        Reporter.output_report(testsuites, os.path.join(reports_dir, result['testsuites_name'] + '-result.xml'))
 
     # レポート出力
     @staticmethod
