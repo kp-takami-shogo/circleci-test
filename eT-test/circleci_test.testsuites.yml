@@ -28,6 +28,6 @@ testsuites:
 
 execute:
   browser: 'Chrome'
-  url: 'http://localhost:10004/circleci-test'
+  url: 'http://localhost'
   ci: 'circleci'
   wait_seconds: 2
