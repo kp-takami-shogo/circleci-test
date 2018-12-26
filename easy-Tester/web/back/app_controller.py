@@ -6,17 +6,19 @@ import importlib
 import glob
 import falcon
 
+
 class AppController:
 
     def __init__(self):
         self.app = falcon.API()
 
-        api_list = self.loadApi()
+        api_list = self.load_api()
 
         for api in api_list:
             self.app.add_route('/' + api[0], api[1]())
 
-    def loadApi(self):
+    @staticmethod
+    def load_api():
         api_list = []
 
         for fpath in glob.glob(os.path.dirname(os.path.abspath(__file__)) + '/api/*.py'):
@@ -31,5 +33,5 @@ class AppController:
 
         return api_list
 
-    def getApp(self):
+    def get_app(self):
         return self.app

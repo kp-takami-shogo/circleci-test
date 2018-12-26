@@ -2,6 +2,7 @@
 
 from wsgiref import simple_server
 
+
 class ServerController:
 
     def __init__(self, app):
