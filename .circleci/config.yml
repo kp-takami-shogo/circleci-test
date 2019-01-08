@@ -1,6 +1,23 @@
 version: 2
 
 jobs:
+  build:
+    machine:
+      image: circleci/classic:edge
+    steps:
+    - checkout
+    - run:
+        name: python setup
+        command: pyenv global 3.5.2 && pip install --upgrade pip
+    - run:
+        name: easy-Tester setup
+        command: sh easy-Tester/setup.sh
+    - run:
+        name: docker-compose up -d
+        command: cd docker && docker-compose up -d
+    - run:
+        name: docker-compose down
+        command: cd docker && docker-compose down
   test:
     machine:
       image: circleci/classic:edge
@@ -30,4 +47,7 @@ workflows:
   version: 2
   test:
     jobs:
-      - test
+      -build
+      - test:
+          requires:
+            - build
