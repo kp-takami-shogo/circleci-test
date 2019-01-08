@@ -25,3 +25,9 @@ jobs:
           path: eT-test/reports
       - store_artifacts:
           path: eT-test/artifacts
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
