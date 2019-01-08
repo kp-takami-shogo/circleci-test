@@ -3,27 +3,19 @@
 import sys
 import os
 
-from assertioner import Assertioner
+from verifier import Verifier
+from asserter import Asserter
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '../setting/'))
-from assertion_setting import AssertionSetting
+from verify_setting import VerifySetting
+from assert_setting import AssertSetting
 
 
-class AssertionManager:
+class VerifyAssertManager:
 
     def __init__(self, testsuites_name):
-        self.assertioner = Assertioner()
-
-        self.browser_controller = ''
-
-        self.results = {
-            'testsuites_name': testsuites_name,
-            'testsuites_tests': 0,
-            'testsuites_failures': 0,
-            'testsuites_errors': 0,
-            'testsuite_results': [],
-            'time': 0
-        }
+        self.verifier = Verifier()
+        self.asserter = Asserter()
 
         self.testsuites_name = testsuites_name
         self.testsuites_tests = 0
@@ -38,33 +30,55 @@ class AssertionManager:
         self.testcase_result = ''
         self.testcase_content = ''
 
-        self.assertion_count_per_testcase = 0
-        self.assertion_failure_count_per_testcase = 0
+        self.all_count_per_testcase = 0
+        self.failure_count_per_testcase = 0
 
-        self.total_assert_successes = 0
-        self.total_assert_failures = 0
-        self.total_assert_errors = 0
+        self.total_successes = 0
+        self.total_failures = 0
+        self.total_errors = 0
+
+        self.results = {
+            'testsuites_name': self.testsuites_name,
+            'testsuites_tests': 0,
+            'testsuites_failures': 0,
+            'testsuites_errors': 0,
+            'testsuite_results': [],
+            'time': 0
+        }
 
     def set_browser_controller(self, browser_controller):
-        self.browser_controller = browser_controller
-        self.assertioner.set_browser_controller(browser_controller)
+        self.verifier.set_browser_controller(browser_controller)
+        self.asserter.set_browser_controller(browser_controller)
 
-    def assertion(self, testsuite_name, testcase_name, assertion_key, params):
-        result = eval('self.assertioner.' + AssertionSetting.get_assertion(assertion_key))(params)
+    def verify(self, verify_key, params):
+        result = eval('self.verifier.' + VerifySetting.get_verify(verify_key))(params)
 
-        self.assertion_count_per_testcase += 1
+        self.all_count_per_testcase += 1
 
         if result[0]:
-            self.total_assert_successes += 1
+            self.total_successes += 1
         else:
-            self.assertion_failure_count_per_testcase += 1
-            self.total_assert_failures += 1
+            self.failure_count_per_testcase += 1
+            self.total_failures += 1
             self.set_testcase_result('failure')
             self.add_testcase_content(result[1])
 
-            self.browser_controller.screenshot({
-                'file_name': self.testsuites_name + '-' + testsuite_name + '-' + testcase_name + '-' + str(self.assertion_failure_count_per_testcase)
-            })
+        return result[0]
+
+    def assertion(self, assert_key, params):
+        result = eval('self.asserter.' + AssertSetting.get_assert(assert_key))(params)
+
+        self.all_count_per_testcase += 1
+
+        if result[0]:
+            self.total_successes += 1
+        else:
+            self.failure_count_per_testcase += 1
+            self.total_failures += 1
+            self.set_testcase_result('failure')
+            self.add_testcase_content(result[1])
+
+        return result[0]
 
     def get_results(self):
         return self.results
@@ -75,7 +89,7 @@ class AssertionManager:
         self.results['testsuites_errors'] = self.testsuites_errors
         self.results['time'] = time
 
-    def add_testsuites_error_count(self):
+    def add_testsuites_errors(self):
         self.testsuites_errors += 1
 
     def add_testsuite_result(self, testsuite_name, time):
@@ -93,11 +107,11 @@ class AssertionManager:
         self.testsuite_errors = 0
         self.testcase_results = []
 
-    def add_testsuite_error_count(self):
+    def add_testsuite_errors(self):
         self.testsuite_errors += 1
 
     def add_testcase_results(self, testcase_name, time):
-        if not (self.testcase_result or self.assertion_count_per_testcase):
+        if not (self.testcase_result or self.all_count_per_testcase):
             self.testcase_result = 'skipped'
 
         self.testcase_results.append({
@@ -114,7 +128,7 @@ class AssertionManager:
         self.testsuites_tests += 1
         self.testsuite_tests += 1
 
-        self.assertion_count_per_testcase = 0
+        self.all_count_per_testcase = 0
 
         self.testcase_result = ''
         self.testcase_content = ''
@@ -125,14 +139,17 @@ class AssertionManager:
     def add_testcase_content(self, content):
         self.testcase_content += content
 
-    def add_total_error_count(self):
-        self.total_assert_errors += 1
+    def get_failure_count_per_testcase(self):
+        return self.failure_count_per_testcase
 
-    def get_total_assert_successes(self):
-        return self.total_assert_successes
+    def get_total_successes(self):
+        return self.total_successes
 
-    def get_total_assert_failures(self):
-        return self.total_assert_failures
+    def get_total_failures(self):
+        return self.total_failures
 
-    def get_total_assert_errors(self):
-        return self.total_assert_errors
+    def get_total_errors(self):
+        return self.total_errors
+
+    def add_total_errors(self):
+        self.total_errors += 1

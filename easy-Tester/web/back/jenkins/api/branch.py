@@ -3,7 +3,7 @@
 import json
 import os
 
-TEST_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../../test/')
+TEST_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../../../test/')
 
 
 class Branch:

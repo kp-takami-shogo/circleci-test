@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Assertionメソッド設定クラス
+# Asserterメソッド設定クラス
 
 
-class AssertionSetting:
+class AssertSetting:
 
     assert_setting = {
         'url_equal': 'assert_url_equals',
@@ -35,5 +35,5 @@ class AssertionSetting:
     }
 
     @staticmethod
-    def get_assertion(assertion_key):
-        return AssertionSetting.assert_setting[assertion_key]
+    def get_assert(assert_key):
+        return AssertSetting.assert_setting[assert_key]

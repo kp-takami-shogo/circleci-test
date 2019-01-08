@@ -1,0 +1,21 @@
+<v-layout
+  id="test-edit"
+  row
+  fill-height
+>
+
+  <v-flex md2>
+    <test-case-list
+      @click-test-case="handleClickTestCase"
+    >
+    </test-case-list>
+  </v-flex>
+
+  <v-flex md10>
+    <test-case-edit-form
+      :selectTestCaseName="selectTestCaseName"
+    >
+    </test-case-edit-form>
+  </v-flex>
+
+</v-layout>
