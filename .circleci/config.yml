@@ -20,8 +20,8 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-        name: easy-Tester setup
-        command: sh easy-Tester/setup.sh
+          name: easy-Tester setup
+          command: sh easy-Tester/setup.sh
       - run:
           name: docker-compose up -d
           command: cd docker && docker-compose up -d
