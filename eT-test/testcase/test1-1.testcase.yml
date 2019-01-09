@@ -1,4 +1,9 @@
-- assert:
-    title_contain:
+- verify:
+    title_equal:
+      expect: 'CircleCI デモ'
+      comment: 'タイトルが「CircleCI デモ」であるか'
+
+- verify:
+    value_equal:
+      css: 'name-input'
       expect: 'CircleCI'
-      comment: 'タイトルにCircleCIが含まれているか'
