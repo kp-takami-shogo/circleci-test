@@ -9,22 +9,22 @@ testsuites:
           - testcase:
               name: 'Test1-1'
               test:
-                - 'testcase/test.testcase.yml'
+                - 'testcase/test1-1.testcase.yml'
           - testcase:
               name: 'Test1-2'
               test:
-                - 'testcase/test.testcase.yml'
+                - 'testcase/test1-1.testcase.yml'
     - testsuite:
         name: 'Test2'
         test:
           - testcase:
               name: 'Test2-1'
               test:
-                - 'testcase/test.testcase.yml'
+                - 'testcase/test1-1.testcase.yml'
           - testcase:
               name: 'Test2-2'
               test:
-                - 'testcase/test.testcase.yml'
+                - 'testcase/test1-1.testcase.yml'
 
 execute:
   browser: 'Chrome'
