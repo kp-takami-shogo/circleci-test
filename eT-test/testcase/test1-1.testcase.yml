@@ -7,3 +7,4 @@
     value_equal:
       css: 'name-input'
       expect: 'CircleCI'
+      comment: 'Nameが「CircleCI」であるか'

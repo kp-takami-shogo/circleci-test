@@ -1,0 +1,11 @@
+- verify:
+    value_equal:
+      css: 'username-input'
+      expect: 'circleci'
+      comment: 'Usernameが「circleci」であるか'
+
+- verify:
+    value_equal:
+      css: 'email-input'
+      expect: 'circleci@'
+      comment: 'Emailが「circleci@」であるか'

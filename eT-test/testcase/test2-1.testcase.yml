@@ -1,0 +1,11 @@
+- verify:
+    value_equal:
+      css: 'subject-select'
+      expect: 'CircleCI'
+      comment: 'Subjectが「CircleCI」であるか'
+
+- verify:
+    value_equal:
+      css: 'message-textarea'
+      expect: 'CircleCI デモ'
+      comment: 'Messageが「CircleCI デモ」であるか'
