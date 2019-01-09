@@ -12,17 +12,16 @@ jobs:
     - run:
         name: easy-Tester setup
         command: sh easy-Tester/setup.sh
+    - persist_to_workspace:
+        root: .
+        paths:
+          - .
   test:
     machine:
       image: circleci/classic:edge
     steps:
-      - checkout
-      - run:
-          name: python setup
-          command: pyenv global 3.5.2 && pip install --upgrade pip
-      - run:
-          name: easy-Tester setup
-          command: sh easy-Tester/setup.sh
+      - attach_workspace:
+          at: .
       - run:
           name: docker-compose up -d
           command: cd docker && docker-compose up -d
