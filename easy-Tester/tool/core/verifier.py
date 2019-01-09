@@ -452,7 +452,7 @@ class Verifier:
         js = 'return document.querySelector(\'' + params['css'] + '\').checked;'
         result = self.browser_controller.execute_js({'js': js})
 
-        if params['expect'] == result:
+        if result:
             Printer.printer('verify_checked_success', [params['expect'], result])
             print('')
 
@@ -460,6 +460,29 @@ class Verifier:
 
         else:
             result_content += Printer.printer('verify_checked_failure', [params['expect'], result]) + '\n\n'
+            print('')
+
+            return [False, result_content]
+
+    def verify_not_checked(self, params):
+        result_content = ''
+
+        if 'comment' in params:
+            result_content += Printer.printer('verify_assert_comment', [params['comment']]) + '\n'
+
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
+
+        js = 'return document.querySelector(\'' + params['css'] + '\').checked;'
+        result = self.browser_controller.execute_js({'js': js})
+
+        if not result:
+            Printer.printer('verify_not_checked_success', [params['expect'], result])
+            print('')
+
+            return [True]
+
+        else:
+            result_content += Printer.printer('verify_not_checked_failure', [params['expect'], result]) + '\n\n'
             print('')
 
             return [False, result_content]

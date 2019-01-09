@@ -33,7 +33,8 @@ class VerifySetting:
         'value_contain': 'verify_value_contains',
         'value_not_contain': 'verify_value_not_contains',
 
-        'checked': 'verify_checked'
+        'checked': 'verify_checked',
+        'not_checked': 'verify_not_checked'
     }
 
     @staticmethod
