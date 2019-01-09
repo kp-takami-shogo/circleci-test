@@ -1,6 +1,6 @@
 name-input: 'div.field.name-field > div > input'
 username-input: 'div.field.username-field > div > input'
-emeil-input: 'div.field.email-field > div > input'
+email-input: 'div.field.email-field > div > input'
 subject-select: 'div.field.subject-field > div > div > select'
 message-textarea: 'div.field.message-field > div > textarea'
 terms-conditions-checkbox: 'div.field.terms-conditions-field > div > label > input[type="checkbox"]'
