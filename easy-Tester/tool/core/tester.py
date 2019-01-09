@@ -43,12 +43,17 @@ class Tester:
     # テスト実行
     def execute(self, *, browser='', url='', driver_path='',
                 remote_flg=0, remote_host_url='',
-                ci='', reports_dir=os.path.join(TEST_PATH, 'reports'),
-                artifacts_dir=os.path.join(TEST_PATH, 'artifacts'),
+                ci='', element_config_file='',
+                reports_dir=os.path.join(TEST_PATH, 'reports'), artifacts_dir=os.path.join(TEST_PATH, 'artifacts'),
                 wait_seconds=5, sleep_time=0, debug_mode=False):
 
         self.sleep_time = sleep_time
         self.debug_mode = debug_mode
+
+        if element_config_file:
+            self.test_builder.add_element_config(os.path.join(TEST_PATH, element_config_file))
+        else:
+            self.test_builder.add_element_config(os.path.join(TEST_PATH, 'element.yml'))
 
         self.verify_assert_manager = VerifyAssertManager(self.testsuites_name)
 
@@ -171,9 +176,6 @@ class Tester:
     def add_testcase(self, testcase_name, testcase):
         self.test_builder.add_testcase(testcase_name, testcase)
 
-    def add_config(self, config_file_path):
-        self.test_builder.add_config(config_file_path)
-
     # processタイプをゲット
     @staticmethod
     def get_process_type(process_name):
@@ -186,7 +188,7 @@ class Tester:
 
     # BrowserControllerのメソッドを実行
     def execute_browser_controller_method(self, process_name, params):
-        config = self.test_builder.get_config()
+        config = self.test_builder.get_element_config()
 
         if 'css' in params:
             if params['css'] in config:
@@ -202,7 +204,7 @@ class Tester:
 
     # Verifierのメソッドを実行
     def execute_verifier_method(self, process_name, verify):
-        config = self.test_builder.get_config()
+        config = self.test_builder.get_element_config()
 
         verify_key = list(verify.keys())[0]
 
@@ -219,7 +221,7 @@ class Tester:
 
     # Asserterのメソッドを実行
     def execute_asserter_method(self, process_name, assertion):
-        config = self.test_builder.get_config()
+        config = self.test_builder.get_element_config()
 
         assert_key = list(assertion.keys())[0]
 

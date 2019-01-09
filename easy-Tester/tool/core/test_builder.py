@@ -6,7 +6,7 @@
 # test 実行するテスト
 # testsuite_name testsuite名
 # testcase_name testcase名
-# config Element設定
+# element_config Element設定
 
 import yaml
 
@@ -20,7 +20,7 @@ class TestBuilder:
         self.testsuite_name = ''
         self.testcase_name = ''
 
-        self.config = {}
+        self.element_config = {}
 
     def add_testsuite(self, testsuite_name):
         self.testsuite_name = testsuite_name
@@ -43,16 +43,16 @@ class TestBuilder:
             self.update_testcase(testcase_file_path)
 
     # Element設定を追加
-    def add_config(self, config_file_path):
+    def add_element_config(self, element_config_file_path):
 
-        file = open(config_file_path)
-        config = yaml.load(file)
+        file = open(element_config_file_path)
+        element_config = yaml.load(file)
 
-        if config is not None:
-            self.config.update(config)
+        if element_config is not None:
+            self.element_config.update(element_config)
 
-    def get_config(self):
-        return self.config
+    def get_element_config(self):
+        return self.element_config
 
     # testにtestcaseを追加
     def update_testcase(self, testcase_file_path):
