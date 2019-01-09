@@ -75,6 +75,9 @@ class Printer:
         'verify_value_not_contains_success': '      Verify ' + PrintDecoration.GREEN + 'Success' + PrintDecoration.END + ' value: ( {0[0]} ) not contains ( {0[1]} )',
         'verify_value_not_contains_failure': '      Verify ' + PrintDecoration.RED + 'Failure' + PrintDecoration.END + ' value: ( {0[0]} ) not contains ( {0[1]} )',
 
+        'verify_checked_success': '      Verify ' + PrintDecoration.GREEN + 'Success' + PrintDecoration.END + ' checked: ( {0[0]} ) not contains ( {0[1]} )',
+        'verify_checked_failure': '      Verify ' + PrintDecoration.RED + 'Failure' + PrintDecoration.END + ' checked: ( {0[0]} ) not contains ( {0[1]} )',
+
         'assert_url_equals_success': '      Assert ' + PrintDecoration.GREEN + 'Success' + PrintDecoration.END + ' url: ( {0[0]} ) equals ( {0[1]} )',
         'assert_url_equals_failure': '      Assert ' + PrintDecoration.RED + 'Failure' + PrintDecoration.END + ' url: ( {0[0]} ) equals ( {0[1]} )',
 
@@ -128,6 +131,9 @@ class Printer:
 
         'assert_value_not_contains_success': '      Assert ' + PrintDecoration.GREEN + 'Success' + PrintDecoration.END + ' value: ( {0[0]} ) not contains ( {0[1]} )',
         'assert_value_not_contains_failure': '      Assert ' + PrintDecoration.RED + 'Failure' + PrintDecoration.END + ' value: ( {0[0]} ) not contains ( {0[1]} )',
+
+        'assert_checked_success': '      Assert ' + PrintDecoration.GREEN + 'Success' + PrintDecoration.END + ' checked: ( {0[0]} ) not contains ( {0[1]} )',
+        'assert_checked_failure': '      Assert ' + PrintDecoration.RED + 'Failure' + PrintDecoration.END + ' checked: ( {0[0]} ) not contains ( {0[1]} )'
     }
 
     return_message = {
@@ -197,6 +203,9 @@ class Printer:
         'verify_value_not_contains_success': 'Verify Success value: ( {0[0]} ) not contains ( {0[1]} )',
         'verify_value_not_contains_failure': 'Verify Failure value: ( {0[0]} ) not contains ( {0[1]} )',
 
+        'verify_checked_success': 'Verify Success checked: ( {0[0]} ) not contains ( {0[1]} )',
+        'verify_checked_failure': 'Verify Failure checked: ( {0[0]} ) not contains ( {0[1]} )',
+
         'assert_url_equals_success': 'Assert Success url: ( {0[0]} ) equals ( {0[1]} )',
         'assert_url_equals_failure': 'Assert Failure url: ( {0[0]} ) equals ( {0[1]} )',
 
@@ -250,6 +259,9 @@ class Printer:
 
         'assert_value_not_contains_success': 'Assert Success value: ( {0[0]} ) not contains ( {0[1]} )',
         'assert_value_not_contains_failure': 'Assert Failure value: ( {0[0]} ) not contains ( {0[1]} )',
+
+        'assert_checked_success': 'Assert Success checked: ( {0[0]} ) not contains ( {0[1]} )',
+        'assert_checked_failure': 'Assert Failure checked: ( {0[0]} ) not contains ( {0[1]} )'
     }
 
     @staticmethod

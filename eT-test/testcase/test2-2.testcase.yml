@@ -1,12 +1,12 @@
 - verify:
-    attribute_equal:
+    checked:
       css: 'terms-conditions-checkbox'
       attr: 'checked'
       expect: 'true'
       comment: 'Terms and Conditionsがチェックされているか'
 
 - verify:
-    attribute_equal:
+    checked:
       css: 'question-radio-yes'
       attr: 'checked'
       expect: 'true'
