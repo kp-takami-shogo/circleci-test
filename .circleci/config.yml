@@ -6,19 +6,19 @@ jobs:
       image: circleci/classic:edge
     steps:
     - checkout
-    - run:
-        name: python setup
-        command: pyenv global 3.5.2 && pip install --upgrade pip
     - persist_to_workspace:
-        root: /
+        root: .
         paths:
-          - /
+          - .
   test:
     machine:
       image: circleci/classic:edge
     steps:
       - attach_workspace:
-          at: /
+          at: .
+      - run:
+        name: python setup
+        command: pyenv global 3.5.2 && pip install --upgrade pip
       - run:
           name: easy-Tester setup
           command: sh easy-Tester/setup.sh
