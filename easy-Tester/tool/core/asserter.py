@@ -440,3 +440,51 @@ class Asserter:
             print('')
 
             return [True]
+
+    # checkされているか
+    def verify_checked(self, params):
+        result_content = ''
+
+        if 'comment' in params:
+            result_content += Printer.printer('verify_assert_comment', [params['comment']]) + '\n'
+
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
+
+        js = 'return document.querySelector(\'' + params['css'] + '\').checked;'
+        result = self.browser_controller.execute_js({'js': js})
+
+        if result:
+            Printer.printer('assert_checked_success', ['True', result])
+            print('')
+
+            return [True]
+
+        else:
+            result_content += Printer.printer('assert_checked_failure', ['True', result]) + '\n\n'
+            print('')
+
+            return [False, result_content]
+
+    # checkされていないか
+    def verify_not_checked(self, params):
+        result_content = ''
+
+        if 'comment' in params:
+            result_content += Printer.printer('verify_assert_comment', [params['comment']]) + '\n'
+
+        self.browser_controller.wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, params['css'])))
+
+        js = 'return document.querySelector(\'' + params['css'] + '\').checked;'
+        result = self.browser_controller.execute_js({'js': js})
+
+        if not result:
+            Printer.printer('assert_not_checked_success', ['False', result])
+            print('')
+
+            return [True]
+
+        else:
+            result_content += Printer.printer('assert_not_checked_failure', ['False', result]) + '\n\n'
+            print('')
+
+            return [False, result_content]

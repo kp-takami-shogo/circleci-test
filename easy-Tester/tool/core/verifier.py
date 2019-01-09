@@ -441,6 +441,7 @@ class Verifier:
 
             return [True]
 
+    # checkされているか
     def verify_checked(self, params):
         result_content = ''
 
@@ -464,6 +465,7 @@ class Verifier:
 
             return [False, result_content]
 
+    # checkされていないか
     def verify_not_checked(self, params):
         result_content = ''
 

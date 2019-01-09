@@ -31,7 +31,10 @@ class AssertSetting:
 
         'value_equal': 'assert_value_equals',
         'value_contain': 'assert_value_contains',
-        'value_not_contain': 'assert_value_not_contains'
+        'value_not_contain': 'assert_value_not_contains',
+
+        'checked': 'assert_checked',
+        'not_checked': 'assert_not_checked'
     }
 
     @staticmethod
