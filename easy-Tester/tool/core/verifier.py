@@ -453,13 +453,13 @@ class Verifier:
         result = self.browser_controller.execute_js({'js': js})
 
         if result:
-            Printer.printer('verify_checked_success', [params['expect'], result])
+            Printer.printer('verify_checked_success', ['True', result])
             print('')
 
             return [True]
 
         else:
-            result_content += Printer.printer('verify_checked_failure', [params['expect'], result]) + '\n\n'
+            result_content += Printer.printer('verify_checked_failure', ['True', result]) + '\n\n'
             print('')
 
             return [False, result_content]
@@ -476,13 +476,13 @@ class Verifier:
         result = self.browser_controller.execute_js({'js': js})
 
         if not result:
-            Printer.printer('verify_not_checked_success', [params['expect'], result])
+            Printer.printer('verify_not_checked_success', ['False', result])
             print('')
 
             return [True]
 
         else:
-            result_content += Printer.printer('verify_not_checked_failure', [params['expect'], result]) + '\n\n'
+            result_content += Printer.printer('verify_not_checked_failure', ['False', result]) + '\n\n'
             print('')
 
             return [False, result_content]
