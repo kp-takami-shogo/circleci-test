@@ -31,7 +31,7 @@
   <div class="field username-field">
     <label class="label">Username</label>
     <div class="control has-icons-left has-icons-right">
-      <input class="input is-success" type="text" placeholder="Text input" value="circleci">
+      <input class="input is-success" type="text" placeholder="Text input" value="jenkins">
       <span class="icon is-small is-left">
       <i class="fas fa-user"></i>
     </span>
@@ -71,7 +71,7 @@
   <div class="field message-field">
     <label class="label">Message</label>
     <div class="control">
-      <textarea class="textarea" placeholder="Textarea">CircleCI デモ</textarea>
+      <textarea class="textarea" placeholder="Textarea">Jenkins デモ</textarea>
     </div>
   </div>
 
