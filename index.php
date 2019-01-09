@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="main.js"></script>
 
-  <title>CircleCI デモ</title>
+  <title>CircleCI Demo</title>
 
 </head>
 
@@ -19,7 +19,7 @@
 
 <div class="container">
 
-  <h1 class="title">CircleCI デモ</h1>
+  <h1 class="title">CircleCI Demo</h1>
 
   <div class="field name-field">
     <label class="label">Name</label>
@@ -62,7 +62,7 @@
       <div class="select">
         <select>
           <option value="CircleCI" selected>CircleCI</option>
-          <option value="デモ">デモ</option>
+          <option value="Demo">Demo</option>
         </select>
       </div>
     </div>
@@ -71,7 +71,7 @@
   <div class="field message-field">
     <label class="label">Message</label>
     <div class="control">
-      <textarea class="textarea" placeholder="Textarea">Jenkins デモ</textarea>
+      <textarea class="textarea" placeholder="Textarea">Jenkins Demo</textarea>
     </div>
   </div>
 

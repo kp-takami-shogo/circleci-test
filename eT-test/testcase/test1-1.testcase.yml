@@ -1,7 +1,7 @@
 - verify:
     title_equal:
-      expect: 'CircleCI デモ'
-      comment: 'タイトルが「CircleCI デモ」であるか'
+      expect: 'CircleCI Demo'
+      comment: 'タイトルが「CircleCI Demo」であるか'
 
 - verify:
     value_equal:

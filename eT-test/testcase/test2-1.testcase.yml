@@ -7,5 +7,5 @@
 - verify:
     value_equal:
       css: 'message-textarea'
-      expect: 'CircleCI デモ'
-      comment: 'Messageが「CircleCI デモ」であるか'
+      expect: 'CircleCI Demo'
+      comment: 'Messageが「CircleCI Demo」であるか'
