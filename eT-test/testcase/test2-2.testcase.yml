@@ -1,13 +1,11 @@
 - verify:
     checked:
       css: 'terms-conditions-checkbox'
-      attr: 'checked'
-      expect: 'true'
+      expect: 'True'
       comment: 'Terms and Conditionsがチェックされているか'
 
 - verify:
     checked:
       css: 'question-radio-yes'
-      attr: 'checked'
-      expect: 'true'
+      expect: 'True'
       comment: 'Question Yesがチェックされているか'
