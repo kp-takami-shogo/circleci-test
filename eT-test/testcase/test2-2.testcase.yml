@@ -1,9 +1,0 @@
-- verify:
-    checked:
-      css: 'terms-conditions-checkbox'
-      comment: 'Terms and Conditionsがチェックされているか'
-
-- verify:
-    checked:
-      css: 'question-radio-yes'
-      comment: 'Question Yesがチェックされているか'

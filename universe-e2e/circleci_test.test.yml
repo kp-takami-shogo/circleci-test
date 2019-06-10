@@ -1,0 +1,27 @@
+version: 1
+
+test:
+  name: 'CircleCI Test'
+  test_suites:
+    - name: 'Test1'
+      test_cases:
+        - name: 'Test1-1'
+          test_case_files:
+            - 'test1-1.testcase.yml'
+        - name: 'Test1-2'
+          test_case_files:
+            - 'test1-2.testcase.yml'
+    - name: 'Test2'
+      test_cases:
+        - name: 'Test2-1'
+          test_case_files:
+            - 'test2-1.testcase.yml'
+        - name: 'Test2-2'
+          test_case_files:
+            - 'test2-2.testcase.yml'
+
+execute:
+  browser: 'Chrome'
+  url: 'http://localhost'
+  ci: 'circleci'
+  wait_seconds: 2
