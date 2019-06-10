@@ -9,14 +9,17 @@
       comment: 'Question Yesがチェックされているか'
 
 
-- click:
-    target: 'port_master_btn'
+- action:
+    click:
+      target: 'port_master_btn'
 
-- click:
-    target: 'new_port_btn'
+- action:
+    click:
+      target: 'new_port_btn'
 
-- click:
-    target: 'new_port_add_btn'
+- action:
+    click:
+      target: 'new_port_add_btn'
 
 - verify:
     text_contain:
@@ -29,12 +32,14 @@
       expect: 'Please fill out this field.'
       comment: '[Country] 入力必須チェックエラーメッセージが表示される'
 
-- input:
-    target: 'new_port_port_input'
-    input_data: ';'
-- input:
-    target: 'new_port_country_input'
-    input_data: ';'
+- action:
+    input:
+      target: 'new_port_port_input'
+      input_data: ';'
+- action:
+    input:
+      target: 'new_port_country_input'
+      input_data: ';'
 - verify:
     text_contain:
       target: 'new_port_port_error_em'
@@ -46,12 +51,14 @@
       expect: 'Name cannot contain semicolon [;].'
       comment: '[Country] セミコロン入力チェックエラーメッセージが表示される'
 
-- input:
-    target: 'new_port_port_input'
-    input_data: 'kobe'
-- input:
-    target: 'new_port_country_input'
-    input_data: 'japan'
+- action:
+    input:
+      target: 'new_port_port_input'
+      input_data: 'kobe'
+- action:
+    input:
+      target: 'new_port_country_input'
+      input_data: 'japan'
 - verify:
     text_contain:
       target: 'new_port_port_error_em'
@@ -63,26 +70,31 @@
       expect: 'Only UPPERCASE characters allowed'
       comment: '[Country] 大文字英字入力チェックエラーメッセージが表示される'
 
-- input:
-    target: 'new_port_port_input'
-    input_data: 'TEST'
-- input:
-    target: 'new_port_country_input'
-    input_data: 'TEST'
-- click:
-    target: 'new_port_add_btn'
+- action:
+    input:
+      target: 'new_port_port_input'
+      input_data: 'TEST'
+- action:
+    input:
+      target: 'new_port_country_input'
+      input_data: 'TEST'
+- action:
+    click:
+      target: 'new_port_add_btn'
 - verify:
     text_contain:
       target: 'danger_notify_message'
       expect: 'This Port is already registered.'
       comment: '[Port Country] 重複チェックエラーメッセージが表示される'
 
-- input:
-    target: 'new_port_port_input'
-    input: 'KOBE'
-- input:
-    target: 'new_port_country_input'
-    input: 'JAPAN'
+- action:
+    input:
+      target: 'new_port_port_input'
+      input: 'KOBE'
+- action:
+    input:
+      target: 'new_port_country_input'
+      input: 'JAPAN'
 - verify:
     css_property_equal:
       target: 'new_port_port_error_em'
@@ -96,8 +108,9 @@
       expect: 'none'
       comment: '[Country] 入力完了'
 
-- click:
-    target: 'new_port_add_btn'
+- action:
+    click:
+      target: 'new_port_add_btn'
 - verify:
     text_contain:
       target: 'port_list_row_1_col_1'
