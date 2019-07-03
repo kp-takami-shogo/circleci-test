@@ -1,11 +1,27 @@
-- verify:
-    value_equal:
-      target: 'username-input'
-      expect: 'circleci'
-      comment: 'Usernameが「circleci」であるか'
+- action:
+    input:
+      target: 'email-input'
+      inputData: 'KP'
+
+- action:
+    select:
+      target: 'subject-select'
+      text: 'KP'
 
 - verify:
     value_equal:
       target: 'email-input'
-      expect: 'circleci@'
-      comment: 'Emailが「circleci@」であるか'
+      expect: 'KP'
+      comment: 'Emailが「KP」であるか'
+
+- verify:
+    textContain:
+      target: 'email-input-error'
+      expect: 'This email is invalid'
+      comment: 'Emailにエラー文「This email is invalid」が表示されているか'
+
+- verify:
+    value_equal:
+      target: 'subject-select'
+      expect: 'KP'
+      comment: 'Subjectは「KP」が選択されているか'

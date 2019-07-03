@@ -3,8 +3,24 @@
       expect: 'CircleCI Demo'
       comment: 'タイトルが「CircleCI Demo」であるか'
 
+- action:
+    input:
+      target: 'name-input'
+      inputData: 'KP'
+
+- action:
+    input:
+      target: 'username-input'
+      inputData: 'KP'
+
 - verify:
     value_equal:
       target: 'name-input'
-      expect: 'CircleCI'
-      comment: 'Nameが「CircleCI」であるか'
+      expect: 'KP'
+      comment: 'Nameが「KP」であるか'
+
+- verify:
+    value_equal:
+      target: 'username-input'
+      expect: 'KP'
+      comment: 'User Nameが「KP」であるか'

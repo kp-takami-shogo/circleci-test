@@ -29,7 +29,7 @@
   </div>
 
   <div class="field username-field">
-    <label class="label">Username</label>
+    <label class="label">User Name</label>
     <div class="control has-icons-left has-icons-right">
       <input class="input is-success" type="text" placeholder="Text input" value="jenkins">
       <span class="icon is-small is-left">
@@ -63,6 +63,7 @@
         <select>
           <option value="CircleCI" selected>CircleCI</option>
           <option value="Demo">Demo</option>
+          <option value="KP">KP</option>
         </select>
       </div>
     </div>
@@ -78,7 +79,7 @@
   <div class="field terms-conditions-field">
     <div class="control">
       <label class="checkbox">
-        <input type="checkbox" checked>
+        <input type="checkbox">
         I agree to the <a href="#">terms and conditions</a>
       </label>
     </div>
@@ -87,17 +88,17 @@
   <div class="field question-field">
     <div class="control">
       <label class="radio">
-        <input type="radio" name="question" checked>
+        <input type="radio" name="question">
         Yes
       </label>
       <label class="radio">
-        <input type="radio" name="question">
+        <input type="radio" name="question" checked>
         No
       </label>
     </div>
   </div>
 
-  <div class="field is-grouped">
+  <div class="field is-grouped submit-cancel-buttons">
     <div class="control">
       <button class="button is-link">Submit</button>
     </div>

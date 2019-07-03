@@ -1,11 +1,22 @@
-- verify:
-    value_equal:
-      target: 'subject-select'
-      expect: 'CircleCI'
-      comment: 'Subjectが「CircleCI」であるか'
+- action:
+    input:
+      target: 'message-textarea'
+      inputData: |
+        CircleCI
+        Demo
+        KP
+
+- action:
+    click:
+      target: 'terms-conditions-checkbox'
 
 - verify:
-    value_equal:
+    value_contain:
       target: 'message-textarea'
-      expect: 'CircleCI Demo'
-      comment: 'Messageが「CircleCI Demo」であるか'
+      expect: 'KP'
+      comment: 'Messageに「KP」が含まれているか'
+
+- verify:
+    checked:
+      target: 'terms-conditions-checkbox'
+      comment: 'Terms and Conditionsがチェックされているか'
