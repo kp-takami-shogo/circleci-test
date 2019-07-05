@@ -1,12 +1,10 @@
-- action:
-    click:
-      target: 'question-radio-yes'
-
 - verify:
     checked:
-      target: 'question-radio-yes'
-      comment: 'Yesが選択されているか'
-
+      comment: Yesが選択されているか
+      target: question-radio-yes
 - action:
     click:
-      target: 'submit-button'
+      target: question-radio-yes
+- action:
+    click:
+      target: submit-button

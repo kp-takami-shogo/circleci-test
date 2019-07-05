@@ -1,27 +1,23 @@
+- verify:
+    value_equal:
+      comment: Emailが「KP」であるか
+      expect: KP
+      target: email-input
 - action:
     input:
-      target: 'email-input'
-      inputData: 'KP'
-
+      input_data: KP
+      target: email-input
 - action:
     select:
-      target: 'subject-select'
-      text: 'KP'
-
+      target: subject-select
+      text: KP
+- verify:
+    text_contain:
+      comment: Emailにエラー文「This email is invalid」が表示されているか
+      expect: This email is invalid
+      target: email-input-error
 - verify:
     value_equal:
-      target: 'email-input'
-      expect: 'KP'
-      comment: 'Emailが「KP」であるか'
-
-- verify:
-    textContain:
-      target: 'email-input-error'
-      expect: 'This email is invalid'
-      comment: 'Emailにエラー文「This email is invalid」が表示されているか'
-
-- verify:
-    value_equal:
-      target: 'subject-select'
-      expect: 'KP'
-      comment: 'Subjectは「KP」が選択されているか'
+      comment: Subjectは「KP」が選択されているか
+      expect: KP
+      target: subject-select

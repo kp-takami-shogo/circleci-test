@@ -1,26 +1,22 @@
 - verify:
     title_equal:
-      expect: 'CircleCI Demo'
-      comment: 'タイトルが「CircleCI Demo」であるか'
-
-- action:
-    input:
-      target: 'name-input'
-      inputData: 'KP'
-
-- action:
-    input:
-      target: 'username-input'
-      inputData: 'KP'
-
+      comment: タイトルが「CircleCI Demo」であるか
+      expect: CircleCI Demo
 - verify:
     value_equal:
-      target: 'name-input'
-      expect: 'KP'
-      comment: 'Nameが「KP」であるか'
-
+      comment: Nameが「KP」であるか
+      expect: KP
+      target: name-input
+- action:
+    input:
+      input_data: KP
+      target: name-input
+- action:
+    input:
+      input_data: KP
+      target: username-input
 - verify:
     value_equal:
-      target: 'username-input'
-      expect: 'KP'
-      comment: 'User Nameが「KP」であるか'
+      comment: User Nameが「KP」であるか
+      expect: KP
+      target: username-input
