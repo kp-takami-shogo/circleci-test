@@ -14,7 +14,7 @@ jobs:
           git submodule foreach git pull origin master
           cd universe
           git checkout -b develop origin/develop
-          git branch -a
+          git status
     - persist_to_workspace:
         root: .
         paths:
