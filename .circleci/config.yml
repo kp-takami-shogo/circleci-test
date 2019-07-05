@@ -20,21 +20,21 @@ jobs:
           name: python setup
           command: pyenv global 3.5.2 && pip install --upgrade pip
       - run:
-          name: easy-Tester setup
-          command: sh easy-Tester/setup.sh
+          name: Universe setup
+          command: sh universe/setup.sh
       - run:
           name: docker-compose up -d
           command: cd docker && docker-compose up -d
       - run:
           name: test execute
-          command: eT test run
+          command: universe test run
       - run:
           name: docker-compose down
           command: cd docker && docker-compose down
       - store_test_results:
-          path: eT-test/reports
+          path: universe-e2e/reports
       - store_artifacts:
-          path: eT-test/artifacts
+          path: universe-e2e/artifacts
 
 workflows:
   version: 2
