@@ -9,8 +9,10 @@ jobs:
     - run:
         name: git submodule update
         command: |
-          cd universe
-          ls
+          git submodule init
+          git submodule update
+          git submodule foreach git pull origin master
+          ls universe
     - persist_to_workspace:
         root: .
         paths:
