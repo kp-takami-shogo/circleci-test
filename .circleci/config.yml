@@ -13,6 +13,7 @@ jobs:
           git submodule update
           git submodule foreach git pull origin master
           cd universe
+          git checkout -b develop origin/develop
           git branch -a
     - persist_to_workspace:
         root: .
