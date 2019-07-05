@@ -12,7 +12,8 @@ jobs:
           git submodule init
           git submodule update
           git submodule foreach git pull origin master
-          ls universe
+          cd universe
+          git log
     - persist_to_workspace:
         root: .
         paths:
