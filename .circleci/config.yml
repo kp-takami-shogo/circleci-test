@@ -21,7 +21,7 @@ jobs:
           command: pyenv global 3.5.2 && pip install --upgrade pip
       - run:
           name: Universe setup
-          command: ls
+          command: ls || cd universe || ls
       - run:
           name: docker-compose up -d
           command: cd docker && docker-compose up -d
