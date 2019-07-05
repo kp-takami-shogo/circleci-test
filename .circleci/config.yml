@@ -9,10 +9,8 @@ jobs:
     - run:
         name: git submodule update
         command: |
-          git submodule sync
-          git submodule update --init
           cd universe
-          git status
+          ls
     - persist_to_workspace:
         root: .
         paths:
@@ -28,7 +26,7 @@ jobs:
           command: pyenv global 3.5.2 && pip install --upgrade pip
       - run:
           name: Universe setup
-          command:
+          command: sh universe/setup.sh
       - run:
           name: docker-compose up -d
           command: cd docker && docker-compose up -d
