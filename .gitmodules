@@ -1,0 +1,3 @@
+[submodule "universe"]
+	path = universe
+	url = git@github.com:takami-00/universe.git
