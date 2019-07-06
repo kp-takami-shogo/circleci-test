@@ -1,8 +1,3 @@
-- verify:
-    value_equal:
-      comment: Emailが「KP」であるか
-      expect: KP
-      target: email-input
 - action:
     input:
       input_data: KP
@@ -11,6 +6,11 @@
     select:
       target: subject-select
       text: KP
+- verify:
+    value_equal:
+      comment: Emailが「KP」であるか
+      expect: KP
+      target: email-input
 - verify:
     text_contain:
       comment: Emailにエラー文「This email is invalid」が表示されているか

@@ -1,9 +1,9 @@
+- action:
+    click:
+      target: question-radio-yes
 - verify:
     checked:
       comment: Yesが選択されているか
-      target: question-radio-yes
-- action:
-    click:
       target: question-radio-yes
 - action:
     click:

@@ -2,14 +2,14 @@
     title_equal:
       comment: タイトルが「CircleCI Demo」であるか
       expect: CircleCI Demo
+- action:
+    input:
+      input_data: KP
+      target: name-input
 - verify:
     value_equal:
       comment: Nameが「KP」であるか
       expect: KP
-      target: name-input
-- action:
-    input:
-      input_data: KP
       target: name-input
 - action:
     input:
