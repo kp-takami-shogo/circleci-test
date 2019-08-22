@@ -1,23 +1,23 @@
 - action:
     input:
       input_data: KP
-      target: email-input
+      target: $index.email-input
 - action:
     select:
-      target: subject-select
+      target: $index.subject-select
       text: KP
 - verify:
     value_equal:
       comment: Emailが「KP」であるか
       expect: KP
-      target: email-input
+      target: $index.email-input
 - verify:
     text_contain:
       comment: Emailにエラー文「This email is invalid」が表示されているか
       expect: This email is invalid
-      target: email-input-error
+      target: $index.email-input-error
 - verify:
     value_equal:
       comment: Subjectは「KP」が選択されているか
       expect: KP
-      target: subject-select
+      target: $index.subject-select

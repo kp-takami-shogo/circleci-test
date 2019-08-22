@@ -1,10 +1,10 @@
 - action:
     click:
-      target: question-radio-yes
+      target: $index.question-radio-yes
 - verify:
     checked:
       comment: Yesが選択されているか
-      target: question-radio-yes
+      target: $index.question-radio-yes
 - action:
     click:
-      target: submit-button
+      target: $index.submit-button

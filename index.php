@@ -98,9 +98,9 @@
     </div>
   </div>
 
-  <div class="field is-grouped submit-cancel-buttons">
+  <div id="button-wrapper" class="field is-grouped submit-cancel-buttons">
     <div class="control">
-      <button class="button is-link">Submit</button>
+      <button id="submit-button" class="button is-link">Submit</button>
     </div>
     <div class="control">
       <button class="button is-text">Cancel</button>

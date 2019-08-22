@@ -1,0 +1,30 @@
+1:
+  name: name-input
+  selector: div.field.name-field > div > input
+2:
+  name: username-input
+  selector: div.field.username-field > div > input
+3:
+  name: email-input
+  selector: div.field.email-field > div > input
+4:
+  name: email-input-error
+  selector: div.field.email-field > p
+5:
+  name: subject-select
+  selector: div.field.subject-field > div > div > select
+6:
+  name: message-textarea
+  selector: div.field.message-field > div > textarea
+7:
+  name: terms-conditions-checkbox
+  selector: div.field.terms-conditions-field > div > label > input[type="checkbox"]
+8:
+  name: question-radio-yes
+  selector: div.field.question-field > div > label:nth-child(1) > input[type="radio"]
+9:
+  name: question-radio-no
+  selector: div.field.question-field > div > label:nth-child(2) > input[type="radio"]
+10:
+  name: submit-button
+  selector: div.field.is-grouped.submit-cancel-buttons > div:nth-child(1) > button

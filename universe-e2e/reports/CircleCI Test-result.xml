@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuites errors="0" failures="2" name="CircleCI Test" tests="4" time="22.934">
-  <testsuite errors="0" failures="1" name="Test1" tests="2" time="12.196">
-    <testcase classname="Test1" name="Test1-1" time="5.152"/>
-    <testcase classname="Test1" name="Test1-2" time="6.761">
-      <failure message="" type="AssertionError">Usernameが「circleci」であるか
-Verify Failure value: ( circleci ) equals ( jenkins )
-
-</failure>
-    </testcase>
+<testsuites errors="0" failures="0" name="CircleCI Test" tests="4" time="21.369">
+  <testsuite errors="0" failures="0" name="Test1" tests="2" time="10.685">
+    <testcase classname="Test1" name="Test1-1" time="4.927"/>
+    <testcase classname="Test1" name="Test1-2" time="5.268"/>
   </testsuite>
-  <testsuite errors="0" failures="1" name="Test2" tests="2" time="10.738">
-    <testcase classname="Test2" name="Test2-1" time="6.77">
-      <failure message="" type="AssertionError">Messageが「CircleCI Demo」であるか
-Verify Failure value: ( CircleCI Demo ) equals ( Jenkins Demo )
-
-</failure>
-    </testcase>
-    <testcase classname="Test2" name="Test2-2" time="3.682"/>
+  <testsuite errors="0" failures="0" name="Test2" tests="2" time="10.684">
+    <testcase classname="Test2" name="Test2-1" time="5.237"/>
+    <testcase classname="Test2" name="Test2-2" time="5.212"/>
   </testsuite>
 </testsuites>

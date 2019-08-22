@@ -5,18 +5,18 @@
 - action:
     input:
       input_data: KP
-      target: name-input
+      target: $index.name-input
+- action:
+    input:
+      input_data: KP
+      target: $index.username-input
 - verify:
     value_equal:
       comment: Nameが「KP」であるか
       expect: KP
-      target: name-input
-- action:
-    input:
-      input_data: KP
-      target: username-input
+      target: $index.name-input
 - verify:
     value_equal:
       comment: User Nameが「KP」であるか
       expect: KP
-      target: username-input
+      target: $index.username-input

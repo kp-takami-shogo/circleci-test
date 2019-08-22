@@ -5,16 +5,16 @@
         KP
 
         '
-      target: message-textarea
+      target: $index.message-textarea
 - action:
     click:
-      target: terms-conditions-checkbox
+      target: $index.terms-conditions-checkbox
 - verify:
     value_contain:
       comment: Messageに「KP」が含まれているか
       expect: KP
-      target: message-textarea
+      target: $index.message-textarea
 - verify:
     checked:
       comment: Terms and Conditionsがチェックされているか
-      target: terms-conditions-checkbox
+      target: $index.terms-conditions-checkbox
