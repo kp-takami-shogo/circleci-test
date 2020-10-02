@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     machine:
-      image: circleci/classic:edge
+      image: circleci/classic:latest
     steps:
     - checkout
     - run:
@@ -20,17 +20,15 @@ jobs:
           - .
   test:
     machine:
-      image: circleci/classic:edge
+      image: circleci/classic:latest
     steps:
       - attach_workspace:
           at: .
       - run:
           name: python setup
           command: |
-            git clone git://github.com/pyenv/pyenv-update.git $(pyenv root)/plugins/pyenv-update
-            pyenv update
+            pyenv versions
             pyenv install --list
-            pyenv install 3.8.5
             pyenv global 3.8.5
             pip install --upgrade pip
       - run:
