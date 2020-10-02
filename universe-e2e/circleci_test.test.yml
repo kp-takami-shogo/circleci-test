@@ -25,6 +25,6 @@ execute:
   url: 'http://localhost'
 #  url: 'http://localhost:8001/circleci-test'
   ci: 'circleci'
-  driver_path: './linux64/driver/chromedriver'
-#  driver_path: './mac64/driver/chromedriver'
+  driver_path: './driver/linux64/chromedriver'
+#  driver_path: './driver/mac64/chromedriver'
   wait_seconds: 2
