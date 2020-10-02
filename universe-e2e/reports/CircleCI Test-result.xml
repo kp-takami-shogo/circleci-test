@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<testsuites errors="0" failures="0" name="CircleCI Test" tests="4" time="21.369">
-  <testsuite errors="0" failures="0" name="Test1" tests="2" time="10.685">
-    <testcase classname="Test1" name="Test1-1" time="4.927"/>
-    <testcase classname="Test1" name="Test1-2" time="5.268"/>
+<testsuites name="CircleCI Test" tests="4" failures="1" errors="0" time="24.09">
+  <testsuite name="Test1" tests="2" errors="0" failures="1" time="13.507">
+    <testcase classname="Test1" name="Test1-1" time="5.321"/>
+    <testcase classname="Test1" name="Test1-2" time="7.924">
+      <failure type="AssertionError" message="">Emailにエラー文「This email is invalid」が表示されているか
+Verify Failure text: ( This email is invalid ) contains (  )
+
+</failure>
+    </testcase>
   </testsuite>
-  <testsuite errors="0" failures="0" name="Test2" tests="2" time="10.684">
-    <testcase classname="Test2" name="Test2-1" time="5.237"/>
-    <testcase classname="Test2" name="Test2-2" time="5.212"/>
+  <testsuite name="Test2" tests="2" errors="0" failures="0" time="10.583">
+    <testcase classname="Test2" name="Test2-1" time="4.555"/>
+    <testcase classname="Test2" name="Test2-2" time="5.833"/>
   </testsuite>
 </testsuites>

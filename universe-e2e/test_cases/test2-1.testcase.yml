@@ -2,9 +2,7 @@
     input:
       input_data: 'CircleCI Demo
 
-        KP
-
-        '
+      KP'
       target: $index.message-textarea
 - action:
     click:
