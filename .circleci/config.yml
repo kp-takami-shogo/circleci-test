@@ -27,7 +27,7 @@ jobs:
       - run:
           name: python setup
           command: |
-            pyenv versions
+            pyenv install --list
             pyenv global 3.7.0
             pip install --upgrade pip
       - run:
